@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DaliyGoals"></activity>
-        <activity android:name=".EditorActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".EditorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
