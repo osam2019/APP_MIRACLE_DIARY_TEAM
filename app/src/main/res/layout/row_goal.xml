@@ -18,7 +18,7 @@
             android:layout_marginEnd="25dp"
             android:visibility="invisible"
             android:gravity="center_vertical|right"
-            android:fontFamily="@font/nsb"
+            android:fontFamily="@font/nsb.ttf"
             android:text="Date" />
         <TextView
             android:id="@+id/textView2"
@@ -27,7 +27,7 @@
             android:layout_marginTop="75dp"
             android:layout_marginHorizontal="25dp"
             android:gravity="center_vertical|center"
-            android:fontFamily="@font/nsb"
+            android:fontFamily="@font/nb.ttf"
             android:text="Date" />
 
         <TextView
@@ -36,7 +36,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="70dp"
             android:gravity="center_vertical"
-            android:fontFamily="@font/nsb"
+            android:fontFamily="@font/nbs.ttf"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:text="\@Developer" />
     </RelativeLayout>

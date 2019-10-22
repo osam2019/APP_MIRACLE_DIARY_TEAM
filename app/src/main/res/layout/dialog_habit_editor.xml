@@ -9,11 +9,12 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:background="@color/colorAccent"
         android:gravity="center_vertical"
-        android:text="습관 등록하기"
+        android:text="Miracle Hobit Regist"
+        android:fontFamily="@font/nsb"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="18sp" />
@@ -22,15 +23,14 @@
         android:id="@+id/habit_editor_context"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_margin = "10dp"
         android:layout_weight="8"
-        android:background="#43CACACA"
+        android:fontFamily="@font/nsb"
+        android:background="#FFFFFF"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:text="test" />
+        android:text="디자인 리서치 강의, Cloud Flare!" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/nsb"
             android:text="취소" />
 
         <Button
@@ -51,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/nsb"
             android:text="습관 등록" />
 
     </LinearLayout>
