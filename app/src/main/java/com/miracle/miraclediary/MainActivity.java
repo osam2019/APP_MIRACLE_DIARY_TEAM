@@ -122,8 +122,8 @@ public class MainActivity extends BaseCustomBarActivity {
 
                 // 이미 지난 시간을 지정했다면 다음날 같은 시간으로 설정
                 if (calendar.before(Calendar.getInstance())) {
-                   // calendar.add(Calendar.DATE, 1);
-                   // count = 1;
+                    calendar.add(Calendar.DATE, 1);
+                    count = 1;
                 }
                 Date currentDateTime = calendar.getTime();
                 String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);
