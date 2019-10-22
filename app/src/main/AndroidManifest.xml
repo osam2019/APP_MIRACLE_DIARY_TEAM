@@ -13,7 +13,6 @@
             android:name=".GoalActivity"
             android:label="@string/title_activity_goal"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".DaliyGoals" />
         <activity android:name=".EditorActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -23,6 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".dialog.EditorTutorialDialog"
+            android:theme="@style/popupTheme" android:screenOrientation="portrait"></activity>
+        <activity android:name=".dialog.HabitEditorDialog"
             android:theme="@style/popupTheme" android:screenOrientation="portrait"></activity>
     </application>
 
