@@ -93,7 +93,7 @@ public class GoalActivity extends AppCompatActivity {
 */
         String[] keys = {"data1", "data2"};
 
-        int [] ids = {R.id.textView, R.id.textView2};
+        int [] ids = {R.id.textView3, R.id.textView2};
 
         SimpleAdapter adapter = new SimpleAdapter(this, data_List, R.layout.row_goal, keys, ids);
         list1.setAdapter(adapter);
