@@ -5,6 +5,7 @@ import android.app.AlarmManager;
 import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -121,6 +122,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+        //임시적으로 추가된 함수
+        Intent b = new Intent(this, DiaryActivity.class);
+        startActivity(b);
+        
     }
 
 

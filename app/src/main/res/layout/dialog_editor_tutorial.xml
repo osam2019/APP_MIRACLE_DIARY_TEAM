@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/det_title"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="1"
+        android:text="title"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/det_context"
+        android:layout_width="match_parent"
+        android:layout_height="279dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_weight="10"
+        android:background="#D8ECECEC"
+        android:text="context"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/det_OK"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="알겠습니다" />
+
+</LinearLayout>
