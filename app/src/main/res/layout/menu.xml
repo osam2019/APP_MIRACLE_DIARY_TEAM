@@ -41,7 +41,7 @@
                 android:adjustViewBounds="true"
                 android:duplicateParentState="false"
                 android:focusableInTouchMode="false"
-                android:onClick="goToMain"
+                android:onClick="goToEdit"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/goal" />
 
@@ -52,6 +52,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="goToDiary"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/list" />
         </LinearLayout>
@@ -69,6 +70,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
+                android:onClick="goToMain"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/alarm" />
 
