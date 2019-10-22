@@ -1,6 +1,7 @@
 package com.miracle.miraclediary;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,10 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.miracle.miraclediary.dialog.EditorTutorialDialog;
 import com.miracle.miraclediary.dialog.HabitEditorDialog;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class EditorActivity extends AppCompatActivity {
 
@@ -102,14 +107,25 @@ public class EditorActivity extends AppCompatActivity {
     public void SubmitContext() {
         UpdateContext(null);
 
-        if (__DEBUG__) {
-            Log.d("일기 작성 내용", m_context);
-        }
-
-        //여기서부터 db에 저장하시면 됩니다
-
+        //if (__DEBUG__) {
+        //    Log.d("일기 작성 내용", m_context);
+        //}
+        sqlAdd();
+        finish();
     }
+    public void sqlAdd() {
+        // Temp DbHelper
+        DBHelper helper = new DBHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String sql = "insert into TestTable2 (textDate, textBody) values (?, ?)";
 
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String data = sdf.format(new Date());
+
+        String [] arg1 = { data, m_context};
+
+        db.execSQL(sql, arg1);
+    }
     //작성 중인 일기 내용을 여러 방면으로 업데이트하는 함수입니다.
     public void UpdateContext(String str) {
         m_context = str == null ? ContextEditText.getText().toString() : str;

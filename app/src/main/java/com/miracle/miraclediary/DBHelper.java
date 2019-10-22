@@ -14,8 +14,17 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        // 데이터 베이스 생성
+        // 데이터 베이스 생성 (습관)
         String sql = "create table TestTable("
+                + "idx integer primary key autoincrement, "
+                + "textDate date not null,"
+                + "textBody text not null"
+                + ")";
+
+        sqLiteDatabase.execSQL(sql);
+
+        // 데이트 베이스 생성 (일기)
+        sql = "create table TestTable2("
                 + "idx integer primary key autoincrement, "
                 + "textDate date not null,"
                 + "textBody text not null"

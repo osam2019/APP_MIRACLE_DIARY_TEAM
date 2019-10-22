@@ -3,10 +3,10 @@ package com.miracle.miraclediary;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabaseCorruptException;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.miracle.miraclediary.dialog.HabitEditorDialog;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,14 +16,10 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 
-public class GoalActivity extends AppCompatActivity {
-
+public class DiaryActivity extends AppCompatActivity {
     ListView list1;
 
     DBHelper helper = new DBHelper(this);
@@ -32,22 +28,21 @@ public class GoalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_goal);
+        setContentView(R.layout.activity_diary);
         db = helper.getWritableDatabase();
-        // Toolbar toolbar = findViewById(R.id.toolbar);
-        // setSupportActionBar(toolbar);
-        sqlGet();
 
-        // Float
+        sqlGet();
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent regist = new Intent(GoalActivity.this, HabitEditorDialog.class);
+                Intent regist = new Intent(DiaryActivity.this, EditorActivity.class);
                 startActivity (regist);
             }
         });
-
     }
     @Override
     protected void onResume()
@@ -58,12 +53,12 @@ public class GoalActivity extends AppCompatActivity {
     public void sqlGet()
     {
         // listView
-        list1 = (ListView)findViewById(R.id.goalList);
+        list1 = (ListView)findViewById(R.id.diaryList);
 
         ArrayList<HashMap<String,Object>> data_List = new ArrayList<HashMap<String,Object>>();
 
 
-        String sql = "select * from TestTable";
+        String sql = "select * from TestTable2";
 
         Cursor c = db.rawQuery(sql, null);
 
@@ -80,17 +75,6 @@ public class GoalActivity extends AppCompatActivity {
 
 
         }
-
-/*
-        for (int i = 0; i< data1.length; i++)
-        {
-            HashMap<String,Object> map = new HashMap<String, Object>();
-            map.put("data1",data1[i]);
-            map.put("data2",data2[i]);
-
-            data_List.add(map);
-        }
-*/
         String[] keys = {"data1", "data2"};
 
         int [] ids = {R.id.textView, R.id.textView2};

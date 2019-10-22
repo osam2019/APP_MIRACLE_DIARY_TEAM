@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".DiaryActivity"
+            android:label="@string/title_activity_diary"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".GoalActivity"
             android:label="@string/title_activity_goal"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".EditorActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -21,10 +25,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".dialog.EditorTutorialDialog"
-            android:theme="@style/popupTheme" android:screenOrientation="portrait"></activity>
-        <activity android:name=".dialog.HabitEditorDialog"
-            android:theme="@style/popupTheme" android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".dialog.EditorTutorialDialog"
+            android:screenOrientation="portrait"
+            android:theme="@style/popupTheme" />
+        <activity
+            android:name=".dialog.HabitEditorDialog"
+            android:screenOrientation="portrait"
+            android:theme="@style/popupTheme" />
     </application>
 
 </manifest>
