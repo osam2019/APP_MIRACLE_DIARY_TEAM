@@ -1,6 +1,8 @@
 package com.miracle.miraclediary;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,10 +25,10 @@ public class EditorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        SetClickEvents();
+        SetEvents();
     }
 
-    private void SetClickEvents() {
+    private void SetEvents() {
         //등록 버튼
         SubmitButton = findViewById(R.id.bt_submit);
         //내용
@@ -36,17 +38,39 @@ public class EditorActivity extends AppCompatActivity {
         SubmitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //텍스트를 받아온다.
-                SetContext(ContextEditText.getText().toString());
+                SubmitContext();
+            }
+        });
+
+        ContextEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    UpdateConText(null);
+                    if(m_context.equals("일기를 적어볼까요 :)")) {
+                        UpdateConText("");
+                    }
+                }
             }
         });
 
 
     }
 
-    public void SetContext(String context) {
-        m_context = context;
+    public void SubmitContext() {
+        UpdateConText(null);
+
         if (__DEBUG__) {
             Log.d("Test", m_context);
+        }
+
+        //여기서부터 db에 저장하시면 됩니다
+    }
+
+    public void UpdateConText(String str) {
+        m_context = str == null ? ContextEditText.getText().toString() : str;
+        if(str != null) {
+            ContextEditText.setText(str);
         }
     }
 
