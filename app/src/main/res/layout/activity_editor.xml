@@ -28,17 +28,17 @@
             android:id="@+id/editText_context"
             android:layout_width="match_parent"
             android:layout_height="533dp"
-            android:ems="10"
-            android:inputType="textMultiLine"
             android:background="#eeeeee"
+            android:ems="10"
             android:gravity="top"
-            android:text="일기를 적어볼까요 :)" />
+            android:inputType="textMultiLine"
+            android:text="test" />
 
         <Button
             android:id="@+id/bt_submit"
-            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:text="작성" />
 
 
