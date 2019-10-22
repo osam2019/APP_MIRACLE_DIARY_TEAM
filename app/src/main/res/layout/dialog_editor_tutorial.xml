@@ -16,7 +16,7 @@
         android:layout_weight="1"
         android:text="title"
         android:textAlignment="viewStart"
-        android:textColor="#E91E63"
+        android:textColor="@color/colorAccent"
         android:textSize="20sp" />
 
     <TextView
