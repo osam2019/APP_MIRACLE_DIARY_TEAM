@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 이전 설정값으로 TimePicker 초기화
-        Date currentTime = nextNotifyTime.getTime();
+        final Date currentTime = nextNotifyTime.getTime();
         SimpleDateFormat HourFormat = new SimpleDateFormat("kk", Locale.getDefault());
         SimpleDateFormat MinuteFormat = new SimpleDateFormat("mm", Locale.getDefault());
 
@@ -71,12 +71,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         Button button = (Button) findViewById(R.id.button);
-        Button button2 = (Button) findViewById(R.id.button2);
+        //Button button2 = (Button) findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
 
-                int hour, hour_24, minute;
+                int hour, hour_24, minute,count = 0;
                 String am_pm;
                 if (Build.VERSION.SDK_INT >= 23 ){
                     hour_24 = picker.getHour();
@@ -97,8 +97,12 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 // 현재 지정된 시간으로 알람 시간 설정
+//                Date currentTime = Calendar.getInstance().getTime();
+//                SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
+//                String day = dayFormat.format(currentTime);
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(System.currentTimeMillis());
+//                calendar.set(Calendar.DATE,Integer.parseInt(day));
                 calendar.set(Calendar.HOUR_OF_DAY, hour_24);
                 calendar.set(Calendar.MINUTE, minute);
                 calendar.set(Calendar.SECOND, 0);
@@ -106,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
                 // 이미 지난 시간을 지정했다면 다음날 같은 시간으로 설정
                 if (calendar.before(Calendar.getInstance())) {
                     calendar.add(Calendar.DATE, 1);
+                    count = 1;
                 }
-
                 Date currentDateTime = calendar.getTime();
                 String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);
                 Toast.makeText(getApplicationContext(),date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
@@ -119,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
 
 
                 diaryNotification(calendar);
+                if(count == 1){
+                    calendar.add(Calendar.DATE,-1);
+                    count = 0;
+                }
             }
 
         });
@@ -154,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                         AlarmManager.INTERVAL_DAY, pendingIntent);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
+                    alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),24*60*1000, pendingIntent);
                 }
             }
 
