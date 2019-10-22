@@ -5,10 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabaseCorruptException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -23,18 +20,9 @@ import java.util.HashMap;
 import java.util.Locale;
 
 public class GoalActivity extends AppCompatActivity {
-    // 리스트뷰 항목에 셋팅한 데이터
-    /*
-    String [] data1 = {
-            "2019.10.21","2019.10.22","2019.10.23","2019.10.24"
-    };
 
-    String [] data2 = {
-            "영단어 10개 외우기", "팔굽혀펴기 10회 하기", "인사 3번 먼저 하기", "일기 매일 작성하기"
-    };
-    */
     ListView list1;
-    int i = 1;
+
     DBHelper helper = new DBHelper(this);
     SQLiteDatabase db;
 
@@ -78,7 +66,8 @@ public class GoalActivity extends AppCompatActivity {
             map.put("data1",c.getString(textDate));
             map.put("data2",c.getString(textBody));
 
-            data_List.add(map);
+            data_List.add(0,map);
+
 
         }
 
