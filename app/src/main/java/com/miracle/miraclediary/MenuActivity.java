@@ -24,5 +24,15 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+    public void goToEdit(View v){
+
+        Intent intent = new Intent(this, EditorActivity.class);
+        startActivity(intent);
+    }
+    public void goToDiary(View v){
+
+        Intent intent = new Intent(this, DiaryActivity.class);
+        startActivity(intent);
+    }
 
 }
