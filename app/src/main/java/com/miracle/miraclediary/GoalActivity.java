@@ -1,11 +1,14 @@
 package com.miracle.miraclediary;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabaseCorruptException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.miracle.miraclediary.dialog.HabitEditorDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -40,10 +43,17 @@ public class GoalActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sqlAdd();
+                Intent regist = new Intent(GoalActivity.this, HabitEditorDialog.class);
+                startActivity (regist);
             }
         });
 
+    }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        sqlGet();
     }
     public void sqlGet()
     {
