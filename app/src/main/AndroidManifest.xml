@@ -13,9 +13,8 @@
             android:name=".GoalActivity"
             android:label="@string/title_activity_goal"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".DaliyGoals" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".EditorActivity">
+        <activity android:name=".EditorActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
