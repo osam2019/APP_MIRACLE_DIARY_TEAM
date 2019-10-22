@@ -3,6 +3,7 @@ package com.miracle.miraclediary;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -49,6 +50,8 @@ public class MainActivity extends Activity implements OnClickListener {
         t1 = findViewById(R.id.textView);
         t2 = findViewById(R.id.textView2);
         a = true;
+        Intent b = new Intent(this, GoalActivity.class);
+        startActivity(b);
     }
 
     public void timeSet(View v) {
