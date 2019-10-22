@@ -30,6 +30,9 @@ public class DiaryActivity extends BaseCustomBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
         db = helper.getWritableDatabase();
+        DBManager.getInstance().setDB(db);
+        DBManager.getInstance().updateDB("TestTable");
+        DBManager.getInstance().updateDB("TestTable2");
 
         sqlGet();
 //        Toolbar toolbar = findViewById(R.id.toolbar);

@@ -38,6 +38,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        DBManager.getInstance().setNotification(true);
 
         PendingIntent pendingI = PendingIntent.getActivity(context, 0,
                 notificationIntent, 0);
