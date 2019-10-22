@@ -42,6 +42,8 @@
         </receiver>
 
         <receiver android:name=".AlarmReceiver" />
+        <activity android:name=".MenuActivity"/>
     </application>
+
 
 </manifest>
