@@ -28,7 +28,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseCustomBarActivity {
 
     int foo = 0;
     @Override
@@ -152,6 +152,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void Init() {
+
+    }
+
 
     void diaryNotification(Calendar calendar, int flag)
     {

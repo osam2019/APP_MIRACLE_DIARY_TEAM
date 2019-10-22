@@ -12,6 +12,8 @@ import androidx.appcompat.widget.Toolbar;
 
 public abstract class BaseCustomBarActivity extends AppCompatActivity {
 
+    private int targetActionBar = R.layout.actionbar_default;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +31,7 @@ public abstract class BaseCustomBarActivity extends AppCompatActivity {
 
         //layout을 가지고 와서 actionbar에 포팅을 시킵니다.
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View actionbar = inflater.inflate(R.layout.actionbar_default, null);
+        View actionbar = inflater.inflate(targetActionBar, null);
 
         actionBar.setCustomView(actionbar);
 
@@ -37,6 +39,14 @@ public abstract class BaseCustomBarActivity extends AppCompatActivity {
         Toolbar parent = (Toolbar) actionbar.getParent();
         parent.setContentInsetsAbsolute(0, 0);
 
+        Init();
+
         return true;
     }
+
+    protected void SetActionBarLayout(int layoutID) {
+        targetActionBar = layoutID;
+    }
+
+    protected abstract void Init();
 }

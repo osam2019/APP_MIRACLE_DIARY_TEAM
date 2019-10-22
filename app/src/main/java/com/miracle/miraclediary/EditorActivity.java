@@ -3,15 +3,10 @@ package com.miracle.miraclediary;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import android.widget.ImageButton;
 
 import com.miracle.miraclediary.dialog.EditorTutorialDialog;
 
@@ -19,11 +14,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class EditorActivity extends AppCompatActivity {
+public class EditorActivity extends BaseCustomBarActivity {
 
     private final String INIT_STR = "할 일을 적어볼까요? :)";
     private boolean __DEBUG__ = true;
-    private Button SubmitButton;
+    private ImageButton SubmitButton;
+    private ImageButton BackButton;
     private EditText ContextEditText;
     private String m_context;
 
@@ -31,15 +27,23 @@ public class EditorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
+        SetActionBarLayout(R.layout.actionbar_editor);
 
+
+
+    }
+
+    @Override
+    protected void Init() {
         SetEvents();
         CreatePopUp();
     }
 
     //이벤트 초기설정 함수입니다.
     private void SetEvents() {
-        //등록 버튼
-        SubmitButton = findViewById(R.id.bt_submit);
+        //툴바 버튼
+        SubmitButton = findViewById(R.id.actionbar_submit);
+        BackButton = findViewById(R.id.actionbar_prev);
         //내용
         ContextEditText = findViewById(R.id.editText_context);
         ContextEditText.setText(INIT_STR);
@@ -49,6 +53,13 @@ public class EditorActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //텍스트를 받아온다.
                 SubmitContext();
+            }
+        });
+
+        BackButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //텍스트를 받아온다.
+                finish();
             }
         });
 
@@ -65,27 +76,6 @@ public class EditorActivity extends AppCompatActivity {
         });
 
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        ActionBar actionBar = getSupportActionBar();
-
-        actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(false);            //액션바 아이콘을 업 네비게이션 형태로 표시합니다.
-        actionBar.setDisplayShowTitleEnabled(false);        //액션바에 표시되는 제목의 표시유무를 설정합니다.
-
-        //layout을 가지고 와서 actionbar에 포팅을 시킵니다.
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View actionbar = inflater.inflate(R.layout.actionbar_default, null);
-
-        actionBar.setCustomView(actionbar);
-
-        //액션바 양쪽 공백 없애기
-        Toolbar parent = (Toolbar) actionbar.getParent();
-        parent.setContentInsetsAbsolute(0, 0);
-
-        return true;
     }
 
     //팝업이 생성되는 함수입니다.
