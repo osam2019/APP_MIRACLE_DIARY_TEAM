@@ -29,15 +29,30 @@ import java.util.GregorianCalendar;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
+
+    int foo = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTime();
+
+        //임시적으로 추가된 함수
+        Intent b = new Intent(this, DiaryActivity.class);
+        startActivity(b);
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        foo = 0;
+        Button btn = (Button) findViewById(R.id.button);
+        btn.setText("아침 설정");
+    }
+
+    void setTime(){
         final TimePicker picker=(TimePicker)findViewById(R.id.timePicker);
         picker.setIs24HourView(true);
-
-
         // 앞서 설정한 값으로 보여주기
         // 없으면 디폴트 값은 현재시간
         SharedPreferences sharedPreferences = getSharedPreferences("daily alarm", MODE_PRIVATE);
@@ -47,9 +62,8 @@ public class MainActivity extends AppCompatActivity {
         nextNotifyTime.setTimeInMillis(millis);
 
         Date nextDate = nextNotifyTime.getTime();
-        String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(nextDate);
-        Toast.makeText(getApplicationContext(),"[처음 실행시] 다음 알람은 " + date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
-
+        //String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(nextDate);
+        //Toast.makeText(getApplicationContext(),"[처음 실행시] 다음 알람은 " + date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
 
         // 이전 설정값으로 TimePicker 초기화
         final Date currentTime = nextNotifyTime.getTime();
@@ -58,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
         int pre_hour = Integer.parseInt(HourFormat.format(currentTime));
         int pre_minute = Integer.parseInt(MinuteFormat.format(currentTime));
-
 
         if (Build.VERSION.SDK_INT >= 23 ){
             picker.setHour(pre_hour);
@@ -70,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        Button button = (Button) findViewById(R.id.button);
+        final Button button = (Button) findViewById(R.id.button);
         //Button button2 = (Button) findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,8 +122,8 @@ public class MainActivity extends AppCompatActivity {
 
                 // 이미 지난 시간을 지정했다면 다음날 같은 시간으로 설정
                 if (calendar.before(Calendar.getInstance())) {
-                    calendar.add(Calendar.DATE, 1);
-                    count = 1;
+                   // calendar.add(Calendar.DATE, 1);
+                   // count = 1;
                 }
                 Date currentDateTime = calendar.getTime();
                 String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);
@@ -121,24 +134,26 @@ public class MainActivity extends AppCompatActivity {
                 editor.putLong("nextNotifyTime", (long)calendar.getTimeInMillis());
                 editor.apply();
 
+                diaryNotification(calendar, foo++);
 
-                diaryNotification(calendar);
+                button.setText ("저녁 설정");
+                if (foo == 2) {
+                    Intent c = new Intent(MainActivity.this, DiaryActivity.class);
+                    startActivity(c);
+                }
+
                 if(count == 1){
                     calendar.add(Calendar.DATE,-1);
                     count = 0;
                 }
+
             }
 
         });
 
-        //임시적으로 추가된 함수
-        Intent b = new Intent(this, DiaryActivity.class);
-        startActivity(b);
-        
     }
 
-
-    void diaryNotification(Calendar calendar)
+    void diaryNotification(Calendar calendar, int flag)
     {
 //        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 //        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
@@ -148,7 +163,8 @@ public class MainActivity extends AppCompatActivity {
         PackageManager pm = this.getPackageManager();
         ComponentName receiver = new ComponentName(this, DeviceBootReceiver.class);
         Intent alarmIntent = new Intent(this, AlarmReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent, 0);
+        alarmIntent.putExtra("flag", flag);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, flag, alarmIntent, flag);
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
 

@@ -7,6 +7,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
@@ -21,10 +22,19 @@ import static android.content.Context.MODE_PRIVATE;
 public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-
+        //Log.d("aaa",""+ intent.getFlags());
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Intent notificationIntent = new Intent(context, MainActivity.class);
+        int flag = -1;
+        {
+            try {
+                flag = intent.getIntExtra("flag",-1);
+            } catch (Exception e) {
+
+            }
+
+        }
 
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -56,13 +66,13 @@ public class AlarmReceiver extends BroadcastReceiver {
         }else builder.setSmallIcon(R.mipmap.ic_launcher); // Oreo 이하에서 mipmap 사용하지 않으면 Couldn't create icon: StatusBarIcon 에러남
 
 
+        String temp_str = flag == 0 ? "아침" : "저녁";
         builder.setAutoCancel(true)
                 .setDefaults(NotificationCompat.DEFAULT_ALL)
                 .setWhen(System.currentTimeMillis())
-
-                .setTicker("{Time to watch some cool stuff!}")
-                .setContentTitle("상태바 드래그시 보이는 타이틀")
-                .setContentText("상태바 드래그시 보이는 서브타이틀")
+                .setTicker(temp_str + " 일기를 작성할 시간이에요!")
+                .setContentTitle("Miracel Diary")
+                .setContentText(temp_str + " 일기를 작성할 시간이에요.\n산뜻한 " + temp_str + "을 시작해봐요!")
                 .setContentInfo("INFO")
                 .setContentIntent(pendingI);
 
