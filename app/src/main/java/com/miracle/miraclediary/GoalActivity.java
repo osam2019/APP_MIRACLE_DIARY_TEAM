@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
-public class GoalActivity extends AppCompatActivity {
+public class GoalActivity extends BaseCustomBarActivity {
 
     ListView list1;
 
@@ -49,6 +49,12 @@ public class GoalActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void Init() {
+
+    }
+
     @Override
     protected void onResume()
     {

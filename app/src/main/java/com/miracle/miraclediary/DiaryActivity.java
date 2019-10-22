@@ -19,7 +19,7 @@ import android.widget.SimpleAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DiaryActivity extends AppCompatActivity {
+public class DiaryActivity extends BaseCustomBarActivity {
     ListView list1;
 
     DBHelper helper = new DBHelper(this);
@@ -44,6 +44,12 @@ public class DiaryActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void Init() {
+
+    }
+
     @Override
     protected void onResume()
     {

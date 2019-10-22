@@ -14,8 +14,9 @@
         android:layout_marginRight="5dp"
         android:layout_marginBottom="5dp"
         android:layout_weight="1"
+        android:fontFamily="@font/ns"
+        android:gravity="center_horizontal|center_vertical"
         android:text="title"
-        android:textAlignment="viewStart"
         android:textColor="@color/colorAccent"
         android:textSize="20sp" />
 
@@ -26,9 +27,11 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_weight="10"
-        android:background="#D8ECECEC"
+        android:background="@drawable/rounded_corner"
+        android:fontFamily="@font/handwriting1"
+        android:gravity="center"
         android:text="context"
-        android:textSize="18sp" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/det_OK"
@@ -36,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:fontFamily="@font/ns"
         android:text="알겠습니다" />
 
 </LinearLayout>
