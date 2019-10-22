@@ -2,6 +2,7 @@ package com.miracle.miraclediary;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
@@ -28,6 +29,11 @@ public class MenuActivity extends BaseCustomBarActivity {
         DBManager.getInstance().setDB(db);
         DBManager.getInstance().updateDB("TestTable");
         DBManager.getInstance().updateDB("TestTable2");
+    }
+
+    @Override
+    protected void Init() {
+
     }
 
     public void goToMain(View v){
