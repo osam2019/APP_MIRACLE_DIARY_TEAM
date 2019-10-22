@@ -3,7 +3,6 @@ package com.miracle.miraclediary;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -15,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.miracle.miraclediary.dialog.EditorTutorialDialog;
-import com.miracle.miraclediary.dialog.HabitEditorDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -78,14 +76,14 @@ public class EditorActivity extends AppCompatActivity {
         actionBar.setDisplayShowTitleEnabled(false);        //액션바에 표시되는 제목의 표시유무를 설정합니다.
 
         //layout을 가지고 와서 actionbar에 포팅을 시킵니다.
-        LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
+        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         View actionbar = inflater.inflate(R.layout.actionbar_default, null);
 
         actionBar.setCustomView(actionbar);
 
         //액션바 양쪽 공백 없애기
-        Toolbar parent = (Toolbar)actionbar.getParent();
-        parent.setContentInsetsAbsolute(0,0);
+        Toolbar parent = (Toolbar) actionbar.getParent();
+        parent.setContentInsetsAbsolute(0, 0);
 
         return true;
     }
@@ -113,6 +111,7 @@ public class EditorActivity extends AppCompatActivity {
         sqlAdd();
         finish();
     }
+
     public void sqlAdd() {
         // Temp DbHelper
         DBHelper helper = new DBHelper(this);
@@ -122,10 +121,11 @@ public class EditorActivity extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String data = sdf.format(new Date());
 
-        String [] arg1 = { data, m_context};
+        String[] arg1 = {data, m_context};
 
         db.execSQL(sql, arg1);
     }
+
     //작성 중인 일기 내용을 여러 방면으로 업데이트하는 함수입니다.
     public void UpdateContext(String str) {
         m_context = str == null ? ContextEditText.getText().toString() : str;
