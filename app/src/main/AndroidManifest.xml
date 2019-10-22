@@ -19,11 +19,7 @@
         <!--            android:theme="@style/AppTheme.NoActionBar" />-->
         <activity android:name=".EditorActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".dialog.EditorTutorialDialog"
@@ -43,6 +39,15 @@
         </receiver>
 
         <receiver android:name=".AlarmReceiver" />
+        <activity android:name=".MenuActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
+
 
 </manifest>

@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 import com.miracle.miraclediary.dialog.EditorTutorialDialog;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -80,11 +82,25 @@ public class EditorActivity extends BaseCustomBarActivity {
 
     //팝업이 생성되는 함수입니다.
     private void CreatePopUp() {
-        //차 후 인텐트를 이용한 데이터 공유 시 수정
-        Intent intent = getIntent();
 
+        ArrayList dates = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
 
-        if (true) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String current_date = sdf.format(new Date());
+
+        boolean isNotificaton = true;
+
+        for(int i = 0; i < dates.size(); i++) {
+            if(current_date.equals(dates.get(i))) {
+                isNotificaton = false;
+                break;
+            }
+        }
+
+        isNotificaton = isNotificaton || DBManager.getInstance().isNotification();
+
+        if (isNotificaton) {
+            DBManager.getInstance().setNotification(false);
             Intent intent_popup = new Intent(EditorActivity.this, EditorTutorialDialog.class);
             startActivityForResult(intent_popup, 1);
         }

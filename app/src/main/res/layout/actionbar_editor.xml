@@ -40,7 +40,7 @@
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_height="30dp"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0"
                 android:contentDescription="TODO"
