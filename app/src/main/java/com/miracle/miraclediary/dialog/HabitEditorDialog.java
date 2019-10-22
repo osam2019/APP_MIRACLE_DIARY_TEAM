@@ -81,10 +81,10 @@ public class HabitEditorDialog extends AppCompatActivity {
     public void SubmitContext() {
         UpdateContext(null);
 
-        if (__DEBUG__) {
+        //if (__DEBUG__) {
             sqlAdd();
             //Log.d("습관 작성 내용", m_context);
-        }
+       // }
 
 
         //여기서부터 db에 저장하시면 됩니다

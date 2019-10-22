@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Miracle Diary</string>
     <string name="title_activity_goal">GoalActivity</string>
+    <string name="title_activity_diary">DiaryActivity</string>
 </resources>

@@ -50,7 +50,7 @@ public class MainActivity extends Activity implements OnClickListener {
         t1 = findViewById(R.id.textView);
         t2 = findViewById(R.id.textView2);
         a = true;
-        Intent b = new Intent(this, GoalActivity.class);
+        Intent b = new Intent(this, DiaryActivity.class);
         startActivity(b);
     }
 
