@@ -13,7 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
-public class MenuActivity extends AppCompatActivity {
+
+public class MenuActivity extends BaseCustomBarActivity {
 
 
     @Override
@@ -21,6 +22,12 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         mar();
+
+        DBHelper helper = new DBHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        DBManager.getInstance().setDB(db);
+        DBManager.getInstance().updateDB("TestTable");
+        DBManager.getInstance().updateDB("TestTable2");
     }
 
     public void goToMain(View v){
