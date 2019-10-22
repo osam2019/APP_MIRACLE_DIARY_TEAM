@@ -16,6 +16,17 @@
         android:background="#D6675E"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:singleLine="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:fontFamily="@font/nsb"
+            android:text="TextView" />
     </LinearLayout>
 
     <LinearLayout
