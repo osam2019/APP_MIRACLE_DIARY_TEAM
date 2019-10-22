@@ -82,8 +82,7 @@ public class EditorActivity extends AppCompatActivity {
         }
 
         //여기서부터 db에 저장하시면 됩니다
-        Intent intent_popup = new Intent(EditorActivity.this, HabitEditorDialog.class);
-        startActivityForResult(intent_popup, 1);
+
     }
 
     //작성 중인 일기 내용을 여러 방면으로 업데이트하는 함수입니다.
