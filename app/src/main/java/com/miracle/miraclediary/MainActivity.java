@@ -28,7 +28,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseCustomBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +127,11 @@ public class MainActivity extends AppCompatActivity {
         Intent b = new Intent(this, DiaryActivity.class);
         startActivity(b);
         
+    }
+
+    @Override
+    protected void Init() {
+
     }
 
 

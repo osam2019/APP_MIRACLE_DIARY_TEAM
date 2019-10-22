@@ -6,16 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".EditorActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ImageView
+        android:id="@+id/imageView6"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:scaleType="matrix"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_paper" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginStart="1dp"
-        android:layout_marginLeft="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginRight="1dp"
         android:layout_marginBottom="1dp"
+        android:baselineAligned="false"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,24 +37,17 @@
         <EditText
             android:id="@+id/editText_context"
             android:layout_width="match_parent"
-            android:layout_height="533dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="5dp"
-            android:background="#eeeeee"
+            android:layout_weight="7"
+            android:background="#00EEEEEE"
             android:ems="10"
+            android:fontFamily="@font/nbb"
             android:gravity="top"
             android:inputType="textMultiLine"
             android:text="test" />
-
-        <Button
-            android:id="@+id/bt_submit"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
-            android:layout_height="69dp"
-            android:layout_marginTop="10dp"
-            android:text="작성"
-            android:textSize="24sp" />
 
 
     </LinearLayout>
