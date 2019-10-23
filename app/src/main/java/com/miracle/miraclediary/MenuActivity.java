@@ -7,23 +7,29 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
-
 
 public class MenuActivity extends BaseCustomBarActivity {
 
-
+    ProgressBar progressBar;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         mar();
 
+        DBManager.getInstance().updateDB("TestTable");
+        DBManager.getInstance().updateDB("TestTable2");
+        ArrayList dates = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
+        bar(dates);
     }
 
     @Override
@@ -38,13 +44,48 @@ public class MenuActivity extends BaseCustomBarActivity {
     }
     public void goToEdit(View v){
 
-        Intent intent = new Intent(this, EditorActivity.class);
+        Intent intent = new Intent(this, GoalActivity.class);
         startActivity(intent);
     }
     public void goToDiary(View v){
 
         Intent intent = new Intent(this, DiaryActivity.class);
         startActivity(intent);
+    }
+    void bar(ArrayList date){
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        String starttime;
+        Date tempdate =new Date();
+        int compare;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date currentdate = new Date();
+        starttime = simpleDateFormat.format(currentdate);
+        try {
+            tempdate =simpleDateFormat.parse("2200-12-31");
+            for(int i = 0; i<date.size();i++)
+            {
+                if(tempdate.before((Date)date.get(i))){
+                    tempdate = (Date)date.get(i);
+                }
+            }
+
+        }
+        catch (Exception e){
+
+        }
+        compare = tempdate.compareTo(currentdate);
+        if(compare<30){
+            progressBar.setMax(20);
+            progressBar.setProgress(date.size());
+        }else if(compare<60) {
+            progressBar.setMax(40);
+            progressBar.setProgress(date.size());
+        }
+        else {
+            progressBar.setMax(60);
+            progressBar.setProgress(date.size());
+        }
+
     }
     void mar(){
         String [] goodWords = {"습관이란 인간으로 하여금 그 어떤 일도 할 수 있게 만들어준다. -도스토옙스키",
@@ -62,9 +103,9 @@ public class MenuActivity extends BaseCustomBarActivity {
                 "노력을 중단하는 것보다 더 위험한 것은 없다. 습관은 버리기는 쉽지만, 다시 들이기는 어렵다. -빅토르 마리 위고",
                 "습관이란 인간으로 하여금 어떤 일이든지 하게 만든다. -도스토예프스키",
                 "인간의 습관과 생활방식은 큰 가지의 잎사귀처럼 변하게 마련이다.어떤 잎은 떨어지고 새 잎이 난다. -단테"};
-        int random = new Random().nextInt(goodWords.length)-2;
+        // int random = new Random().nextInt(goodWords.length)-1;
         TextView text = (TextView)findViewById(R.id.textView);
-        text.setText(goodWords[random] + "/" + goodWords[random + 1] + "/" + goodWords[random + 2]);
+        text.setText(goodWords[1] + "/" + goodWords[1 + 1] + "/" + goodWords[1 + 2]);
         text.setSelected(true);
     }
 }

@@ -27,7 +27,8 @@ public class DBHelper extends SQLiteOpenHelper {
         sql = "create table TestTable2("
                 + "idx integer primary key autoincrement, "
                 + "textDate date not null,"
-                + "textBody text not null"
+                + "textBody text not null,"
+                + "textSub text not null"
                 + ")";
 
         sqLiteDatabase.execSQL(sql);
