@@ -15,7 +15,7 @@
         android:background="@color/colorAccent">
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/menu_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
@@ -42,15 +42,34 @@
                     android:progressDrawable="@drawable/progress"
                     android:rotation="-90" />
 
-                <TextView
-                    android:id="@+id/levelView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:fontFamily="@font/nsb"
-                    android:text="TextView"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-                    android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/levelView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/nsb"
+                        android:text="Level 3"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/menu_subtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/handwriting1"
+                        android:text="다음 레벨까지\n99개의 일기가 남았어요!"
+                        android:textAlignment="center"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -143,8 +162,8 @@
             android:adjustViewBounds="true"
             android:background="?attr/selectableItemBackground"
             android:onClick="goToDiary"
-            android:paddingTop="20sp"
-            android:paddingBottom="20sp"
+            android:paddingTop="15sp"
+            android:paddingBottom="15sp"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/list" />
 

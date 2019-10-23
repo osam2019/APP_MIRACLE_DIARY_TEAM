@@ -144,7 +144,13 @@ public class MenuActivity extends BaseCustomBarActivity {
         text.setSelected(true);
     }
     void level(ArrayList date) {
-        textView = (TextView) findViewById(R.id.levelView);
-        textView.setText("Level " + date.size());
+        int level = date.size() / 10;
+        int exp = (date.size() % 10);
+
+        textView = findViewById(R.id.levelView);
+        textView.setText("Level " + level);
+
+        TextView subtitle = findViewById(R.id.menu_subtitle);
+        subtitle.setText("다음 레벨까지\n" + (10 - exp) + "개의 일기가 남았어요!");
     }
 }
