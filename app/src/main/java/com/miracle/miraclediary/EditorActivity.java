@@ -93,11 +93,13 @@ public class EditorActivity extends BaseCustomBarActivity {
             }
         }
 
+        boolean isFirst = isNotificaton;
         isNotificaton = isNotificaton || DBManager.getInstance().isNotification();
 
         if (isNotificaton) {
             DBManager.getInstance().setNotification(false);
             Intent intent_popup = new Intent(EditorActivity.this, EditorTutorialDialog.class);
+            intent_popup.putExtra("isFirst", isFirst);
             startActivityForResult(intent_popup, 1);
         }
 
