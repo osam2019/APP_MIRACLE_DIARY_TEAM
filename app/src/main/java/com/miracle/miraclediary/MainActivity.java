@@ -45,8 +45,8 @@ public class MainActivity extends BaseCustomBarActivity {
     protected void onResume(){
         super.onResume();
         foo = 0;
-        Button btn = (Button) findViewById(R.id.button);
-        btn.setText("아침 설정");
+        TextView t1 = (TextView) findViewById(R.id.tv1);
+        t1.setText("하루를 시작할 시간을 정해주세요!\n알람을 설정해드립니다.");
     }
 
     void setTime(){
@@ -125,8 +125,8 @@ public class MainActivity extends BaseCustomBarActivity {
                     count = 1;
                 }
                 Date currentDateTime = calendar.getTime();
-                String date_text = new SimpleDateFormat("yyyy년 MM월 dd일 EE요일 a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);
-                Toast.makeText(getApplicationContext(),date_text + "으로 알람이 설정되었습니다!", Toast.LENGTH_SHORT).show();
+                String date_text = new SimpleDateFormat("a hh시 mm분 ", Locale.getDefault()).format(currentDateTime);
+                Toast.makeText(getApplicationContext(),date_text + "\n알람 설정 완료!", Toast.LENGTH_SHORT).show();
 
                 //  Preference에 설정한 값 저장
                 SharedPreferences.Editor editor = getSharedPreferences("daily alarm", MODE_PRIVATE).edit();
@@ -136,8 +136,10 @@ public class MainActivity extends BaseCustomBarActivity {
                 diaryNotification(calendar, foo++);
 
                 //button.setText ("저녁 설정");
+                ((TextView)findViewById(R.id.tv1)).setText("하루를 마무리 할 시간을 설정해주세요!\n알람을 설정해드립니다.");
                 if (foo == 2) {
-                    Intent c = new Intent(MainActivity.this, DiaryActivity.class);
+                    Intent c = new Intent(MainActivity.this, MenuActivity.class);
+                    c.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(c);
                 }
 
