@@ -26,9 +26,6 @@ public class MenuActivity extends BaseCustomBarActivity {
         setContentView(R.layout.menu);
         mar();
 
-        DBHelper helper = new DBHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        DBManager.getInstance().setDB(db);
         DBManager.getInstance().updateDB("TestTable");
         DBManager.getInstance().updateDB("TestTable2");
         ArrayList dates = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
@@ -47,7 +44,7 @@ public class MenuActivity extends BaseCustomBarActivity {
     }
     public void goToEdit(View v){
 
-        Intent intent = new Intent(this, EditorActivity.class);
+        Intent intent = new Intent(this, GoalActivity.class);
         startActivity(intent);
     }
     public void goToDiary(View v){
@@ -106,9 +103,9 @@ public class MenuActivity extends BaseCustomBarActivity {
                 "노력을 중단하는 것보다 더 위험한 것은 없다. 습관은 버리기는 쉽지만, 다시 들이기는 어렵다. -빅토르 마리 위고",
                 "습관이란 인간으로 하여금 어떤 일이든지 하게 만든다. -도스토예프스키",
                 "인간의 습관과 생활방식은 큰 가지의 잎사귀처럼 변하게 마련이다.어떤 잎은 떨어지고 새 잎이 난다. -단테"};
-        int random = new Random().nextInt(goodWords.length)-2;
+        // int random = new Random().nextInt(goodWords.length)-1;
         TextView text = (TextView)findViewById(R.id.textView);
-        text.setText(goodWords[random] + "/" + goodWords[random + 1] + "/" + goodWords[random + 2]);
+        text.setText(goodWords[1] + "/" + goodWords[1 + 1] + "/" + goodWords[1 + 2]);
         text.setSelected(true);
     }
 }

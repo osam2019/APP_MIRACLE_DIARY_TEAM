@@ -22,12 +22,13 @@
 
         <ImageButton
             android:id="@+id/actionbar_prev"
-            android:layout_width="40dp"
-            android:layout_height="25dp"
-            android:layout_marginLeft="10dp"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
             android:layout_weight="0"
-            android:background="#00FFFFFF"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="fitCenter"
+            android:scaleX="0.35"
+            android:scaleY="0.35"
             app:srcCompat="@drawable/arrow" />
 
         <LinearLayout
@@ -60,12 +61,14 @@
 
         <ImageButton
             android:id="@+id/actionbar_submit"
-            android:layout_width="40dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="12dp"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
             android:layout_weight="0"
-            android:background="#00FFFFFF"
+            android:alpha="0.4"
+            android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="fitCenter"
+            android:scaleX="0.35"
+            android:scaleY="0.35"
             app:srcCompat="@drawable/save" />
 
     </LinearLayout>
