@@ -83,7 +83,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
                 edit.putExtra("mode",true);
                 edit.putExtra("idx",args[0]);
                 edit.putExtra("subject",arrSub.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
-                edit.putExtra("body",arrBody.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
+                edit.putExtra("body",Html.fromHtml(arrBody.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position)).toString());
                 startActivity(edit);
                 return true;
             case R.id.del:
@@ -153,6 +153,8 @@ public class DiaryActivity extends BaseCustomBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        DBManager.getInstance().updateDB("TestTable");
+        DBManager.getInstance().updateDB("TestTable2");
         sqlGet();
     }
 
