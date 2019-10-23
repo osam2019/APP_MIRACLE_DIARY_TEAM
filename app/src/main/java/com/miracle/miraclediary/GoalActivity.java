@@ -66,7 +66,7 @@ public class GoalActivity extends BaseCustomBarActivity {
                                     View v,
                                     ContextMenu.ContextMenuInfo menuInfo) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.diary_menu, menu);
+        inflater.inflate(R.menu.goal_menu, menu);
     }
 
     public boolean onContextItemSelected(MenuItem item) {
