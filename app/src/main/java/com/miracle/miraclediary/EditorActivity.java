@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -12,14 +11,12 @@ import com.miracle.miraclediary.dialog.EditorTutorialDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 public class EditorActivity extends BaseCustomBarActivity {
 
     private final String INIT_STR = "할 일을 적어볼까요? :)";
-    private boolean __DEBUG__ = true;
     private ImageButton SubmitButton;
     private ImageButton BackButton;
     private EditText ContextEditText;
@@ -60,7 +57,6 @@ public class EditorActivity extends BaseCustomBarActivity {
 
         BackButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //텍스트를 받아온다.
                 finish();
             }
         });
@@ -111,9 +107,6 @@ public class EditorActivity extends BaseCustomBarActivity {
     public void SubmitContext() {
         UpdateContext(null);
 
-        //if (__DEBUG__) {
-        //    Log.d("일기 작성 내용", m_context);
-        //}
         sqlAdd();
         finish();
     }

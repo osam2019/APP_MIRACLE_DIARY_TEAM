@@ -36,6 +36,7 @@ public class GoalActivity extends BaseCustomBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goal);
+        SetActionBarLayout(R.layout.actionbar_prev);
         db = helper.getWritableDatabase();
         // Toolbar toolbar = findViewById(R.id.toolbar);
         // setSupportActionBar(toolbar);
@@ -79,7 +80,12 @@ public class GoalActivity extends BaseCustomBarActivity {
     }
     @Override
     protected void Init() {
-
+        findViewById(R.id.actionbar_prev).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //텍스트를 받아온다.
+                finish();
+            }
+        });
     }
 
     @Override

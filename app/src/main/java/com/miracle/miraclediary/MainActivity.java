@@ -11,11 +11,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -35,12 +37,9 @@ public class MainActivity extends BaseCustomBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SetActionBarLayout(R.layout.actionbar_settime);
 
-        setTime();
 
-        //임시적으로 추가된 함수
-        Intent b = new Intent(this, DiaryActivity.class);
-        startActivity(b);
     }
     @Override
     protected void onResume(){
@@ -83,7 +82,7 @@ public class MainActivity extends BaseCustomBarActivity {
         }
 
 
-        final Button button = (Button) findViewById(R.id.button);
+        final ImageButton button = (ImageButton) findViewById(R.id.actionbar_settime);
         //Button button2 = (Button) findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +135,7 @@ public class MainActivity extends BaseCustomBarActivity {
 
                 diaryNotification(calendar, foo++);
 
-                button.setText ("저녁 설정");
+                //button.setText ("저녁 설정");
                 if (foo == 2) {
                     Intent c = new Intent(MainActivity.this, DiaryActivity.class);
                     startActivity(c);
@@ -156,6 +155,14 @@ public class MainActivity extends BaseCustomBarActivity {
     @Override
     protected void Init() {
 
+        findViewById(R.id.actionbar_prev).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //텍스트를 받아온다.
+                finish();
+            }
+        });
+
+        setTime();
     }
 
 

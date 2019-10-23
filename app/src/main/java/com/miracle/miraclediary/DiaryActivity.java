@@ -32,6 +32,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
+        SetActionBarLayout(R.layout.actionbar_prev);
         db = helper.getWritableDatabase();
         DBManager.getInstance().setDB(db);
         DBManager.getInstance().updateDB("TestTable");
@@ -82,7 +83,12 @@ public class DiaryActivity extends BaseCustomBarActivity {
 
     @Override
     protected void Init() {
-
+        findViewById(R.id.actionbar_prev).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //텍스트를 받아온다.
+                finish();
+            }
+        });
     }
 
     @Override
