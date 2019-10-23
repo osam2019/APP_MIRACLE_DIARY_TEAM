@@ -6,7 +6,8 @@
             android:shape="ring"
             android:useLevel="false"
             android:thickness="15dp">
-            <solid android:color="@color/colorAccent"/>
+<!--            <solid android:color="@color/colorAccent"/>-->
+            <solid android:color="#320A0909"/>
         </shape>
     </item>
 
@@ -17,11 +18,11 @@
             android:innerRadiusRatio="2.55"
             android:shape="ring"
             android:thickness="15dp">
-            <!--<corners android:bottomLeftRadius="3dp"/>
-            <corners android:topRightRadius="3dp"/>
-            <corners android:bottomRightRadius="3dp"/>-->
             <corners android:radius="3dp"/>
-            <solid android:color="#FFFFFF"/>
+            <gradient android:type="sweep"
+                android:startColor="#F5967B"
+                android:endColor="#FF5722"/>
+<!--            <solid android:color="#FFFFFF"/>-->
         </shape>
 
     </item>
@@ -31,7 +32,7 @@
             android:shape="ring"
             android:thickness="7dp"
             android:useLevel="false">
-            <solid android:color="#FFFFFF"/>
+            <solid android:color="#F5967B"/>
         </shape>
     </item>
     <item>
@@ -42,7 +43,7 @@
                     android:shape="ring"
                     android:thickness="7dp"
                     android:useLevel="false">
-                    <solid android:color="#FFFFFF"/>
+                    <solid android:color="#FF5722"/>
                 </shape>
             </inset>
         </rotate>
