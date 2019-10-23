@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MenuActivity extends BaseCustomBarActivity {
 
@@ -60,10 +62,9 @@ public class MenuActivity extends BaseCustomBarActivity {
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
         String starttime;
         Date tempdate =new Date();
-        int compare;
+//        int compare;
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date currentdate = new Date();
-        starttime = simpleDateFormat.format(currentdate);
+//        Date currentdate = new Date();
         try {
             tempdate =simpleDateFormat.parse("2200-12-31");
             for(int i = 0; i<date.size();i++)
@@ -76,18 +77,49 @@ public class MenuActivity extends BaseCustomBarActivity {
         }
         catch (Exception e){
         }
-        compare = tempdate.compareTo(currentdate);
-        if(compare<30){
-            progressBar.setMax(20);
-            progressBar.setProgress(date.size());
-        }else if(compare<60) {
-            progressBar.setMax(40);
-            progressBar.setProgress(date.size());
-        }
-        else {
-            progressBar.setMax(60);
-            progressBar.setProgress(date.size());
-        }
+
+        final int level = date.size() / 10;
+        final int exp = (date.size() % 10) * 50;
+        progressBar.setMax(500);
+
+        final Timer exp_ani_timer = new Timer();
+        TimerTask exp_ani_task = new TimerTask() {
+
+            float t = -1.f;
+
+            @Override
+            public void run() {
+                progressBar.setProgress(0);
+                float max = (float) (Math.PI);
+                while(t < max) {
+                    t += 0.02;
+                    try {
+                        Thread.sleep(5);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    if(t < 0.f) continue;
+                    progressBar.setProgress((int)(exp * (1 - (Math.cos(t) + 1) / 2)));
+                }
+                progressBar.setProgress(exp);
+                exp_ani_timer.cancel();
+
+            }
+        };
+
+        exp_ani_timer.schedule(exp_ani_task, 0);
+
+//        if(compare<30){
+//            progressBar.setMax(20);
+//            progressBar.setProgress(date.size());
+//        }else if(compare<60) {
+//            progressBar.setMax(40);
+//            progressBar.setProgress(date.size());
+//        }
+//        else {
+//            progressBar.setMax(60);
+//            progressBar.setProgress(date.size());
+//        }
 
     }
     void mar(){
@@ -113,6 +145,6 @@ public class MenuActivity extends BaseCustomBarActivity {
     }
     void level(ArrayList date) {
         textView = (TextView) findViewById(R.id.levelView);
-        textView.setText("Level:" + date.size());
+        textView.setText("Level " + date.size());
     }
 }

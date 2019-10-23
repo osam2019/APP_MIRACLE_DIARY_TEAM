@@ -28,23 +28,11 @@
             android:background="#00D6675E"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_vertical"
-                android:ellipsize="marquee"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:fontFamily="@font/nsb"
-                android:marqueeRepeatLimit="marquee_forever"
-                android:singleLine="true"
-                android:text="TextView"
-                android:textColor="#FFFFFF" />
-
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="3">
+
                 <ProgressBar
                     android:id="@+id/progressBar"
                     style="?android:attr/progressBarStyleHorizontal"
@@ -59,9 +47,37 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
+                    android:fontFamily="@font/nsb"
                     android:text="TextView"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+                    android:textStyle="bold" />
             </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|center_vertical"
+                    android:layout_weight="1"
+                    android:background="#2AFFFFFF"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/nsb"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:singleLine="true"
+                    android:text="TextView"
+                    android:textColor="#A8FFFFFF" />
+            </RelativeLayout>
+
         </LinearLayout>
 
         <!--        <ProgressBar-->
@@ -146,19 +162,6 @@
             android:paddingBottom="20sp"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/alarm" />
-
-        <ImageButton
-            android:id="@+id/statisticsButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:background="?attr/selectableItemBackground"
-            android:paddingTop="20sp"
-            android:paddingBottom="20sp"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/statics" />
 
 
     </LinearLayout>
