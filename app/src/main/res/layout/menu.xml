@@ -22,19 +22,52 @@
             android:visibility="visible"
             app:srcCompat="@drawable/menu_bg_1" />
 
-        <TextView
-            android:id="@+id/textView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="center|center_vertical"
-            android:ellipsize="marquee"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:fontFamily="@font/nsb"
-            android:marqueeRepeatLimit="marquee_forever"
-            android:singleLine="true"
-            android:text="TextView"
-            android:textColor="#FFFFFF" />
+            android:background="#00D6675E"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|center_vertical"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/nsb"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:text="TextView"
+                android:textColor="#FFFFFF" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progress="80"
+                android:progressDrawable="@drawable/progress"
+                android:rotation="-90" />
+        </LinearLayout>
+
+        <!--        <ProgressBar-->
+<!--            android:id="@+id/progressBar"-->
+<!--            style="?android:attr/progressBarStyle"-->
+<!--            android:layout_width="362dp"-->
+<!--            android:layout_height="232dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:longClickable="false"-->
+<!--            android:progress="30"-->
+<!--            android:progressDrawable="@drawable/progress" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/textView7"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="#D66752"-->
+<!--            android:text="TextView" />-->
     </FrameLayout>
 
 <!--    <LinearLayout-->
