@@ -2,6 +2,8 @@ package com.miracle.miraclediary.dialog;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -10,7 +12,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.miracle.miraclediary.DBManager;
 import com.miracle.miraclediary.R;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class EditorTutorialDialog extends AppCompatActivity {
 
@@ -19,8 +27,8 @@ public class EditorTutorialDialog extends AppCompatActivity {
     TextView TitleTextView;
     TextView ContextTextView;
 
-    int m_contextType = -1;
     String m_contextStr = null;
+    boolean isFirst = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +40,16 @@ public class EditorTutorialDialog extends AppCompatActivity {
 
         TitleTextView = findViewById(R.id.det_title);
         ContextTextView = findViewById(R.id.det_context);
+        ContextTextView.setMovementMethod(new ScrollingMovementMethod());
 
         //액티비티 간의 데이터를 받아옵니다.
         Intent intent = getIntent();
-        //임시
-        m_contextType = 1; // 0 : 아침, 1 : 저녁
+        isFirst = intent.getExtras().getBoolean("isFirst");
+
 
 
         SetEvents();
+        SetContext();
         SetTitle();
     }
 
@@ -60,18 +70,39 @@ public class EditorTutorialDialog extends AppCompatActivity {
     private void SetTitle() {
         String title_str;
 
-        if (m_contextType == 0) {
+        if (isFirst) {
             title_str = "어제 생각해놨던 일들이에요.";
         } else {
             title_str = "오늘 적었었던 내용들이에요.";
         }
 
         if (m_contextStr == null || m_contextStr.isEmpty()) {
-            m_contextStr = "작성된게 없어요! 좀 더 노력해보아요!";
+            m_contextStr = "<b>작성된게 없어요! 좀 더 노력해보아요!</b>";
         }
 
         TitleTextView.setText(title_str);
-        ContextTextView.setText(m_contextStr);
+        ContextTextView.setText(Html.fromHtml(m_contextStr));
+
+    }
+
+    private void SetContext() {
+        ArrayList dates = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
+        ArrayList contexts = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.CONTEXT);
+        final Calendar cal = Calendar.getInstance();
+        if(isFirst)
+            cal.add(Calendar.DATE, -1);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String targetDate = dateFormat.format(cal.getTime());
+
+
+        for(int i = 0, count = 0; i < dates.size(); i++) {
+            if(targetDate.equals(dates.get(i))) {
+                count++;
+                if(m_contextStr == null) m_contextStr = "";
+                m_contextStr += "<b>" + count + "번째 일기</b><br/>";
+                m_contextStr += contexts.get(i) + "<br/><br/>";
+            }
+        }
 
     }
 

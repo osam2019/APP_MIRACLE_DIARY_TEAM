@@ -31,6 +31,7 @@
         android:fontFamily="@font/handwriting1"
         android:gravity="center"
         android:text="context"
+        android:scrollbars="vertical"
         android:textSize="24sp" />
 
     <Button

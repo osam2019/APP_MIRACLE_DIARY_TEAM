@@ -7,14 +7,20 @@
     android:orientation="vertical"
     tools:context=".MenuActivity">
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/mainView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_gravity="center_vertical"
         android:layout_weight="8"
-        android:background="#D6675E"
-        android:orientation="vertical">
+        android:background="@color/colorAccent">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:visibility="visible"
+            app:srcCompat="@drawable/menu_bg_1" />
 
         <TextView
             android:id="@+id/textView"
@@ -29,7 +35,19 @@
             android:singleLine="true"
             android:text="TextView"
             android:textColor="#FFFFFF" />
-    </LinearLayout>
+    </FrameLayout>
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/mainView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:layout_gravity="center_vertical"-->
+<!--        android:layout_weight="8"-->
+<!--        android:background="@color/colorAccent"-->
+<!--        android:orientation="vertical"-->
+<!--        android:scaleType="centerCrop">-->
+
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/tapView"
@@ -39,52 +57,63 @@
         android:orientation="horizontal">
 
 
+        <ImageButton
+            android:id="@+id/editButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackground"
+            android:duplicateParentState="false"
+            android:focusableInTouchMode="false"
+            android:onClick="goToEdit"
+            android:paddingTop="20sp"
+            android:paddingBottom="20sp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/goal" />
 
-            <ImageButton
-                android:id="@+id/editButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:duplicateParentState="false"
-                android:focusableInTouchMode="false"
-                android:onClick="goToEdit"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/goal" />
-
-            <ImageButton
-                android:id="@+id/listButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:onClick="goToDiary"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/list" />
+        <ImageButton
+            android:id="@+id/listButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="goToDiary"
+            android:paddingTop="20sp"
+            android:paddingBottom="20sp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/list" />
 
 
-            <ImageButton
-                android:id="@+id/alarmButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:onClick="goToMain"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/alarm" />
+        <ImageButton
+            android:id="@+id/alarmButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="goToMain"
+            android:paddingTop="20sp"
+            android:paddingBottom="20sp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/alarm" />
 
-            <ImageButton
-                android:id="@+id/statisticsButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/statics" />
+        <ImageButton
+            android:id="@+id/statisticsButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="?attr/selectableItemBackground"
+            android:paddingTop="20sp"
+            android:paddingBottom="20sp"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/statics" />
 
 
     </LinearLayout>
