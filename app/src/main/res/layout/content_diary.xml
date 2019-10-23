@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="68dp"
         android:fontFamily="@font/handwriting1"
         android:lineSpacingMultiplier="1.3"
         android:text="일기장이 비었어요!\n오늘은 어떤 일이 있었나요?"

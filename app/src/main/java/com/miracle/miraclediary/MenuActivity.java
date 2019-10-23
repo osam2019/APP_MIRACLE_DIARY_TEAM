@@ -78,8 +78,8 @@ public class MenuActivity extends BaseCustomBarActivity {
         catch (Exception e){
         }
 
-        final int level = date.size() / 10;
-        final int exp = (date.size() % 10) * 50;
+        final int level = date.size() / 5;
+        final int exp = (date.size() % 5) * 100;
         progressBar.setMax(500);
 
         final Timer exp_ani_timer = new Timer();
@@ -144,13 +144,13 @@ public class MenuActivity extends BaseCustomBarActivity {
         text.setSelected(true);
     }
     void level(ArrayList date) {
-        int level = date.size() / 10;
-        int exp = (date.size() % 10);
+        int level = date.size() / 5;
+        int exp = (date.size() % 5);
 
         textView = findViewById(R.id.levelView);
         textView.setText("Level " + level);
 
         TextView subtitle = findViewById(R.id.menu_subtitle);
-        subtitle.setText("다음 레벨까지\n" + (10 - exp) + "개의 일기가 남았어요!");
+        subtitle.setText("다음 레벨까지\n" + (5 - exp) + "개의 일기가 남았어요!");
     }
 }
