@@ -14,6 +14,7 @@ public class EditorTextWatcher implements TextWatcher {
     private EditText context;
     private TextHighlightChanger lights;
     private ImageButton button;
+//    private String inputText;
 
     public boolean isInit() {
         return isInit;
@@ -29,6 +30,7 @@ public class EditorTextWatcher implements TextWatcher {
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//        inputText = s.toString();
     }
 
     @Override
@@ -38,12 +40,14 @@ public class EditorTextWatcher implements TextWatcher {
             button.setAlpha(1.0f);
         }
 
-        if(s.toString().equals(" ")) {
-            context.setText(Html.fromHtml(lights.SetHighlight(context.getText().toString())));
-        }
     }
 
     @Override
     public void afterTextChanged(Editable s) {
+
+//        String result = s.toString().substring(inputText.length());
+//        if(result.equals(" ")) {
+//            context.setText(Html.fromHtml(lights.SetHighlight(context.getText().toString())));
+//        }
     }
 }

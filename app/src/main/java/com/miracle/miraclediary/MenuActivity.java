@@ -25,13 +25,16 @@ public class MenuActivity extends BaseCustomBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         mar();
-
+    }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
         DBManager.getInstance().updateDB("TestTable");
         DBManager.getInstance().updateDB("TestTable2");
         ArrayList dates = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
         bar(dates);
     }
-
     @Override
     protected void Init() {
 
@@ -71,7 +74,6 @@ public class MenuActivity extends BaseCustomBarActivity {
 
         }
         catch (Exception e){
-
         }
         compare = tempdate.compareTo(currentdate);
         if(compare<30){

@@ -25,7 +25,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         //Log.d("aaa",""+ intent.getFlags());
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent notificationIntent = new Intent(context, MainActivity.class);
+        Intent notificationIntent = new Intent(context, SplashActivity.class);
         int flag = -1;
         {
             try {
