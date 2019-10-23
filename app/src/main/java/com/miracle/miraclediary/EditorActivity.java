@@ -2,7 +2,9 @@ package com.miracle.miraclediary;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,9 +19,13 @@ import java.util.Locale;
 public class EditorActivity extends BaseCustomBarActivity {
 
     private final String INIT_STR = "할 일을 적어볼까요? :)";
+    private final String INIT_TITLE_STR = "제목을 입력하세요.";
     private ImageButton SubmitButton;
     private ImageButton BackButton;
+    private EditText TitleEditText;
     private EditText ContextEditText;
+
+    private TextHighlightChanger lights;
     private String m_context;
     private String m_title; // 제목 넣어주시면 됩니다.
 
@@ -35,6 +41,10 @@ public class EditorActivity extends BaseCustomBarActivity {
 
     @Override
     protected void Init() {
+
+        lights = new TextHighlightChanger();
+        lights.AddHighlight('#', "00ffff");
+
         SetEvents();
         CreatePopUp();
     }
@@ -44,6 +54,9 @@ public class EditorActivity extends BaseCustomBarActivity {
         //툴바 버튼
         SubmitButton = findViewById(R.id.actionbar_submit);
         BackButton = findViewById(R.id.actionbar_prev);
+        //제목
+        TitleEditText = findViewById(R.id.editText_title);
+        TitleEditText.setText(INIT_TITLE_STR);
         //내용
         ContextEditText = findViewById(R.id.editText_context);
         ContextEditText.setText(INIT_STR);
@@ -68,7 +81,22 @@ public class EditorActivity extends BaseCustomBarActivity {
                 if (hasFocus) {
                     UpdateContext(null);
                     if (m_context.equals(INIT_STR)) {
-                        UpdateContext("");
+                        //UpdateContext("");
+                    }
+                } else {
+                    UpdateContext(null);
+                    ContextEditText.setText(Html.fromHtml(lights.SetHighlight(m_context)));
+                }
+            }
+        });
+
+        TitleEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    String title = TitleEditText.getText().toString();
+                    if (title.equals(INIT_TITLE_STR)) {
+                        TitleEditText.setText("");
                     }
                 }
             }
@@ -109,7 +137,7 @@ public class EditorActivity extends BaseCustomBarActivity {
     //작성 버튼을 눌렀을 시 발생하는 함수입니다.
     public void SubmitContext() {
         UpdateContext(null);
-
+        m_title = TitleEditText.getText().toString();
         sqlAdd();
         finish();
     }
@@ -134,8 +162,6 @@ public class EditorActivity extends BaseCustomBarActivity {
         if (str != null) {
             ContextEditText.setText(str);
         }
-        m_title = "Hello, World!";
-        // 작성 중인 일기 제목을 업데이트 하는 함수를 추가해주시면 될 듯합니다. 핡
     }
 
 
