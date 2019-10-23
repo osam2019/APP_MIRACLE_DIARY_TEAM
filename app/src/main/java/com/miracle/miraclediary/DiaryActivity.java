@@ -29,7 +29,9 @@ import java.util.HashMap;
 
 public class DiaryActivity extends BaseCustomBarActivity {
     ListView list1;
-    ArrayList<String> temp;
+    ArrayList<String> temp; // idx
+    ArrayList<String> arrSub;
+    ArrayList<String> arrBody;
     DBHelper helper = new DBHelper(this);
     SQLiteDatabase db;
 
@@ -55,6 +57,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
             @Override
             public void onClick(View view) {
                 Intent regist = new Intent(DiaryActivity.this, EditorActivity.class);
+                regist.putExtra("mode",false);
                 startActivity(regist);
             }
         });
@@ -76,7 +79,12 @@ public class DiaryActivity extends BaseCustomBarActivity {
         switch (item.getItemId()) {
 
             case R.id.edit:
-
+                Intent edit = new Intent(DiaryActivity.this, EditorActivity.class);
+                edit.putExtra("mode",true);
+                edit.putExtra("idx",args[0]);
+                edit.putExtra("subject",arrSub.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
+                edit.putExtra("body",arrBody.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
+                startActivity(edit);
                 return true;
             case R.id.del:
                 sql = "delete from TestTable2 where idx=?";
@@ -100,6 +108,9 @@ public class DiaryActivity extends BaseCustomBarActivity {
         Cursor c = db.rawQuery(sql, null);
 
         temp = new ArrayList<>();
+        arrSub = new ArrayList<>();
+        arrBody = new ArrayList<>();
+
 
         while (c.moveToNext()) {
             int idx_pos = c.getColumnIndex("idx");
@@ -113,7 +124,10 @@ public class DiaryActivity extends BaseCustomBarActivity {
             map.put("data3", c.getString(textSub));
             // map.put("idx", c.getString(idx_pos));
 
+            arrSub.add(0,c.getString(textSub));
+            arrBody.add(0,c.getString(textBody));
             temp.add(0, c.getString(idx_pos));
+
 
             data_List.add(0, map);
         }
