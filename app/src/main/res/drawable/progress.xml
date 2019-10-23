@@ -10,13 +10,20 @@
         </shape>
     </item>
 
-    <item android:id="@android:id/progress">
+    <!--<item android:id="@android:id/progress">-->
+    <item>
+
         <shape
             android:innerRadiusRatio="2.55"
             android:shape="ring"
             android:thickness="15dp">
+            <!--<corners android:bottomLeftRadius="3dp"/>
+            <corners android:topRightRadius="3dp"/>
+            <corners android:bottomRightRadius="3dp"/>-->
+            <corners android:radius="3dp"/>
             <solid android:color="#FFFFFF"/>
         </shape>
+
     </item>
     <item android:left="337dp">
         <shape
@@ -27,16 +34,19 @@
             <solid android:color="#FFFFFF"/>
         </shape>
     </item>
-    <item android:left="337dp">
+    <item>
         <rotate>
-            <shape
-                android:innerRadiusRatio="1000"
-                android:shape="ring"
-                android:thickness="7dp"
-                android:useLevel="false">
-                <solid android:color="#FFFFFF"/>
-            </shape>
+            <inset android:insetLeft="337dp">
+                <shape
+                    android:innerRadiusRatio="1000"
+                    android:shape="ring"
+                    android:thickness="7dp"
+                    android:useLevel="false">
+                    <solid android:color="#FFFFFF"/>
+                </shape>
+            </inset>
         </rotate>
     </item>
+
 
 </layer-list>
