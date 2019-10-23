@@ -12,6 +12,9 @@ import com.miracle.miraclediary.dialog.HabitEditorDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -34,7 +37,15 @@ public class DiaryActivity extends BaseCustomBarActivity {
         DBManager.getInstance().updateDB("TestTable");
         DBManager.getInstance().updateDB("TestTable2");
 
+        // Context Menu 구성
+        list1 = (ListView)findViewById(R.id.diaryList);
+        registerForContextMenu(list1);
+
+        // Sql
         sqlGet();
+
+
+
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
@@ -46,6 +57,27 @@ public class DiaryActivity extends BaseCustomBarActivity {
                 startActivity (regist);
             }
         });
+    }
+    // Context 메뉴 구성
+    @Override
+    public void onCreateContextMenu(ContextMenu menu,
+                                    View v,
+                                    ContextMenu.ContextMenuInfo menuInfo)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.diary_menu, menu);
+    }
+
+    public boolean onContextItemSelected(MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.del:
+
+                return true;
+        }
+
+        return super.onContextItemSelected(item);
     }
 
     @Override
@@ -61,8 +93,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
     }
     public void sqlGet()
     {
-        // listView
-        list1 = (ListView)findViewById(R.id.diaryList);
+
 
         ArrayList<HashMap<String,Object>> data_List = new ArrayList<HashMap<String,Object>>();
 

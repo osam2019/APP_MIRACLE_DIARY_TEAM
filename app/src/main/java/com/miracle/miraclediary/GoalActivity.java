@@ -12,6 +12,9 @@ import com.miracle.miraclediary.dialog.HabitEditorDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -38,6 +41,10 @@ public class GoalActivity extends BaseCustomBarActivity {
         // setSupportActionBar(toolbar);
         sqlGet();
 
+        // Context Menu 구성
+        list1 = (ListView)findViewById(R.id.diaryList);
+        registerForContextMenu(list1);
+
         // Float
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +56,27 @@ public class GoalActivity extends BaseCustomBarActivity {
         });
 
     }
+    // Context 메뉴 구성
+    @Override
+    public void onCreateContextMenu(ContextMenu menu,
+                                    View v,
+                                    ContextMenu.ContextMenuInfo menuInfo)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.diary_menu, menu);
+    }
 
+    public boolean onContextItemSelected(MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.del:
+
+                return true;
+        }
+
+        return super.onContextItemSelected(item);
+    }
     @Override
     protected void Init() {
 
@@ -63,8 +90,6 @@ public class GoalActivity extends BaseCustomBarActivity {
     }
     public void sqlGet()
     {
-        // listView
-        list1 = (ListView)findViewById(R.id.goalList);
 
         ArrayList<HashMap<String,Object>> data_List = new ArrayList<HashMap<String,Object>>();
 
