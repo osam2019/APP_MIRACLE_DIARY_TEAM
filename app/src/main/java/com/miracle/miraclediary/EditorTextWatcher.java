@@ -37,6 +37,10 @@ public class EditorTextWatcher implements TextWatcher {
             isInit = true;
             button.setAlpha(1.0f);
         }
+
+        if(s.toString().equals(" ")) {
+            context.setText(Html.fromHtml(lights.SetHighlight(context.getText().toString())));
+        }
     }
 
     @Override
