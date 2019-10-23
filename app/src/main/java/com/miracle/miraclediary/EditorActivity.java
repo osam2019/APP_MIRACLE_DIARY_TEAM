@@ -21,6 +21,7 @@ public class EditorActivity extends BaseCustomBarActivity {
     private ImageButton BackButton;
     private EditText ContextEditText;
     private String m_context;
+    private String m_title; // 제목 넣어주시면 됩니다.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,12 +118,12 @@ public class EditorActivity extends BaseCustomBarActivity {
         // Temp DbHelper
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
-        String sql = "insert into TestTable2 (textDate, textBody) values (?, ?)";
+        String sql = "insert into TestTable2 (textDate, textBody, textSub) values (?, ?, ?)";
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String data = sdf.format(new Date());
 
-        String[] arg1 = {data, m_context};
+        String[] arg1 = {data, m_context, m_title};
 
         db.execSQL(sql, arg1);
     }
@@ -133,6 +134,8 @@ public class EditorActivity extends BaseCustomBarActivity {
         if (str != null) {
             ContextEditText.setText(str);
         }
+        m_title = "Hello, World!";
+        // 작성 중인 일기 제목을 업데이트 하는 함수를 추가해주시면 될 듯합니다. 핡
     }
 
 
