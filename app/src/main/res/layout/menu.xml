@@ -84,7 +84,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|center_vertical"
                     android:layout_weight="1"
-                    android:background="#2AFFFFFF"
                     android:ellipsize="marquee"
                     android:focusable="true"
                     android:focusableInTouchMode="true"
@@ -93,8 +92,7 @@
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     android:singleLine="true"
-                    android:text="TextView"
-                    android:textColor="#A8FFFFFF" />
+                    android:text="" />
             </RelativeLayout>
 
         </LinearLayout>
