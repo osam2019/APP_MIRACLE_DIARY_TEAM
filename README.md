@@ -7,4 +7,4 @@ Android Version : at least Android 4.0.3 (IceCreamSandwich)
 
 ### Getting Started
 
-<![Alt text](/readmeImg/mainView.PNG)
+<![Alt text](/path/readmeImg/mainView.PNG)
