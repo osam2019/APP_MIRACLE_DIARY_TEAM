@@ -22,7 +22,7 @@ public class MenuActivity extends BaseCustomBarActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
-        mar();
+//        mar();
 
     }
 
@@ -38,7 +38,7 @@ public class MenuActivity extends BaseCustomBarActivity {
     }
     public void goToEdit(View v){
 
-        Intent intent = new Intent(this, EditorActivity.class);
+        Intent intent = new Intent(this, GoalActivity.class);
         startActivity(intent);
     }
     public void goToDiary(View v){
