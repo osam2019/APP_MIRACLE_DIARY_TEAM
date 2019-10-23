@@ -26,7 +26,7 @@ public class TextHighlightChanger {
             if(m_highlights.containsKey(result_c[i])){
                String color = m_highlights.get(result_c[i]);
 
-               result += "<font color=\"" + color + "\">";
+               result += "<font color=\'" + color + "\'>";
                isHighlight = true;
             }else if(isHighlight && result_c[i] == ' ') {
                 isHighlight = false;
