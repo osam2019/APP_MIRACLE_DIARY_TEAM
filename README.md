@@ -30,9 +30,9 @@ Android Version : at least Android 4.0.3 (IceCreamSandwich)
 
 
 
-## 저작권 및 사용권 Copyright / End User License
+## 저작권 및 사용권 (Copyright / End User License)
 
-## 배포자 및 개발자의 연락처 정보 Contact Information
+## 배포자 및 개발자의 연락처 정보 (Contact Information)
 
 이준호 : lhsljh456@naver.com
 
@@ -42,10 +42,10 @@ Android Version : at least Android 4.0.3 (IceCreamSandwich)
 
 정홍주 : sub06038@naver.com
 
-## 알려진 버그 Known Issues
+## 알려진 버그 (Known Issues)
 
-## 문제 발생에 대한 해결책 Troubleshooting
+## 문제 발생에 대한 해결책 (Troubleshooting)
 
-## 크레딧 Credit
+## 크레딧 (Credit)
 
-## 업데이트 정보 Change Log
+## 업데이트 정보 (Change Log)
