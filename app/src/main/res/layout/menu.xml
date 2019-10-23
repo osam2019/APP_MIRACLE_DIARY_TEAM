@@ -145,6 +145,7 @@
             android:background="?attr/selectableItemBackground"
             android:paddingTop="20sp"
             android:paddingBottom="20sp"
+            android:onClick="goToCalendar"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/statics" />
 

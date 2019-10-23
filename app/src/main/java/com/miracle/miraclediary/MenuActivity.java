@@ -55,6 +55,10 @@ public class MenuActivity extends BaseCustomBarActivity {
         Intent intent = new Intent(this, DiaryActivity.class);
         startActivity(intent);
     }
+    public void goToCalendar(View v){
+        Intent intent =  new Intent(this,CalendarActivity.class);
+        startActivity(intent);
+    }
     void bar(ArrayList date){
         progressBar = (ProgressBar)findViewById(R.id.progressBar);
         String starttime;
