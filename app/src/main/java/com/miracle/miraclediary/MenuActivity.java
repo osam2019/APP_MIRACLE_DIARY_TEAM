@@ -7,23 +7,29 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
-
 
 public class MenuActivity extends BaseCustomBarActivity {
 
-
+    ProgressBar progressBar;
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
         mar();
 
+        DBManager.getInstance().updateDB("TestTable");
+        DBManager.getInstance().updateDB("TestTable2");
+        ArrayList dates = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
+        bar(dates);
     }
 
     @Override
@@ -45,6 +51,41 @@ public class MenuActivity extends BaseCustomBarActivity {
 
         Intent intent = new Intent(this, DiaryActivity.class);
         startActivity(intent);
+    }
+    void bar(ArrayList date){
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        String starttime;
+        Date tempdate =new Date();
+        int compare;
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date currentdate = new Date();
+        starttime = simpleDateFormat.format(currentdate);
+        try {
+            tempdate =simpleDateFormat.parse("2200-12-31");
+            for(int i = 0; i<date.size();i++)
+            {
+                if(tempdate.before((Date)date.get(i))){
+                    tempdate = (Date)date.get(i);
+                }
+            }
+
+        }
+        catch (Exception e){
+
+        }
+        compare = tempdate.compareTo(currentdate);
+        if(compare<30){
+            progressBar.setMax(20);
+            progressBar.setProgress(date.size());
+        }else if(compare<60) {
+            progressBar.setMax(40);
+            progressBar.setProgress(date.size());
+        }
+        else {
+            progressBar.setMax(60);
+            progressBar.setProgress(date.size());
+        }
+
     }
     void mar(){
         String [] goodWords = {"습관이란 인간으로 하여금 그 어떤 일도 할 수 있게 만들어준다. -도스토옙스키",
