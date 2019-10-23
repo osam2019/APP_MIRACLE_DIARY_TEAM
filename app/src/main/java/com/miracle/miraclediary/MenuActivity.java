@@ -34,6 +34,7 @@ public class MenuActivity extends BaseCustomBarActivity {
         DBManager.getInstance().updateDB("TestTable2");
         ArrayList dates = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
         bar(dates);
+        level(dates);
     }
     @Override
     protected void Init() {
@@ -109,5 +110,9 @@ public class MenuActivity extends BaseCustomBarActivity {
         TextView text = (TextView)findViewById(R.id.textView);
         text.setText(goodWords[1] + "/" + goodWords[1 + 1] + "/" + goodWords[1 + 2]);
         text.setSelected(true);
+    }
+    void level(ArrayList date) {
+        textView = (TextView) findViewById(R.id.levelView);
+        textView.setText("Level:" + date.size());
     }
 }
