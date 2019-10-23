@@ -22,7 +22,7 @@ public class MenuActivity extends BaseCustomBarActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu);
-//        mar();
+        mar();
 
     }
 

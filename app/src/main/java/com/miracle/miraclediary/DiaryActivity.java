@@ -104,20 +104,22 @@ public class DiaryActivity extends BaseCustomBarActivity {
             int idx_pos = c.getColumnIndex("idx");
             int textDate = c.getColumnIndex("textDate");
             int textBody = c.getColumnIndex("textBody");
+            int textSub = c.getColumnIndex("textSub");
 
             HashMap<String, Object> map = new HashMap<String, Object>();
             map.put("data1", c.getString(textDate));
             map.put("data2", c.getString(textBody));
-            map.put("idx", c.getString(idx_pos));
+            map.put("data3", c.getString(textSub));
+            // map.put("idx", c.getString(idx_pos));
 
             temp.add(0, c.getString(idx_pos));
 
             data_List.add(0, map);
         }
         Log.d("aaa", "" + temp.size());
-        String[] keys = {"data1", "data2", "idx"};
+        String[] keys = {"data1", "data2", "data3"};
 
-        int[] ids = {R.id.textView3, R.id.textView2, R.id.textIdx};
+        int[] ids = {R.id.textView, R.id.textView2, R.id.textView3};
 
         SimpleAdapter adapter = new SimpleAdapter(this, data_List, R.layout.row_diary, keys, ids);
         list1.setAdapter(adapter);
