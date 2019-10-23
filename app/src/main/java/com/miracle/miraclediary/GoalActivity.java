@@ -83,7 +83,7 @@ public class GoalActivity extends BaseCustomBarActivity {
         switch (item.getItemId()) {
             case R.id.ach:
                 doneGoal(mode.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position).equals("00") |
-                                mode.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position).equals("10")?true:false ,
+                                mode.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position).equals("10")?false:true ,
                         temp.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
                 sqlGet();
                 return true;
@@ -144,12 +144,13 @@ public class GoalActivity extends BaseCustomBarActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String data = sdf.format(new Date());
 
-        String sql = "select * from TestTable where textDate != \"" + data + "\"";
-
-
-        Cursor c = db.rawQuery(sql, null);
         temp = new ArrayList<>();
         mode = new ArrayList<>();
+
+        // 4 성공한 습관
+        String sql = "select * from TestTable where textDate == \"" + data + "\"";
+        Cursor c = db.rawQuery(sql, null);
+
         while (c.moveToNext()) {
             int idx_pos = c.getColumnIndex("idx");
             int textDate = c.getColumnIndex("textDate");
@@ -165,8 +166,72 @@ public class GoalActivity extends BaseCustomBarActivity {
             temp.add(0, c.getString(idx_pos));
             mode.add(0,c.getString(textMode));
             data_List.add(0, map);
+        }
 
+        // 3 일반 알림
+        sql = "select * from TestTable where textDate != \"" + data + "\" and mode=\"00\";";
 
+        c = db.rawQuery(sql, null);
+
+        while (c.moveToNext()) {
+            int idx_pos = c.getColumnIndex("idx");
+            int textDate = c.getColumnIndex("textDate");
+            int textBody = c.getColumnIndex("textBody");
+            int textMode = c.getColumnIndex("mode");
+
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("data1", c.getString(textDate));
+            map.put("data2", c.getString(textBody));
+            Log.d("bbb", c.getString(textDate));
+            //map.put()
+
+            temp.add(0, c.getString(idx_pos));
+            mode.add(0,c.getString(textMode));
+            data_List.add(0, map);
+        }
+
+        // 2 습관 알림
+        sql = "select * from TestTable where textDate != \"" + data + "\" and mode=\"01\";";
+
+        c = db.rawQuery(sql, null);
+
+        while (c.moveToNext()) {
+            int idx_pos = c.getColumnIndex("idx");
+            int textDate = c.getColumnIndex("textDate");
+            int textBody = c.getColumnIndex("textBody");
+            int textMode = c.getColumnIndex("mode");
+
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("data1", c.getString(textDate));
+            map.put("data2", c.getString(textBody));
+            Log.d("bbb", c.getString(textDate));
+            //map.put()
+
+            temp.add(0, c.getString(idx_pos));
+            mode.add(0, c.getString(textMode));
+            data_List.add(0, map);
+        }
+
+        // 1 중요 알림
+        sql = "select * from TestTable where textDate != \"" + data + "\" and (mode=\"11\" or mode=\"10\");";
+
+        c = db.rawQuery(sql, null);
+
+        while (c.moveToNext()) {
+            int idx_pos = c.getColumnIndex("idx");
+            int textDate = c.getColumnIndex("textDate");
+            int textBody = c.getColumnIndex("textBody");
+            int textMode = c.getColumnIndex("mode");
+
+            HashMap<String, Object> map = new HashMap<String, Object>();
+            map.put("data1", c.getString(textDate));
+            map.put("data2", c.getString(textBody));
+            Log.d("bbb", c.getString(textDate));
+            //map.put()
+
+            temp.add(0, c.getString(idx_pos));
+            mode.add(0,c.getString(textMode));
+            data_List.add(0, map);
         }
 
 
