@@ -8,6 +8,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.miracle.miraclediary.dialog.EditorTutorialDialog;
 
@@ -28,15 +29,13 @@ public class EditorActivity extends BaseCustomBarActivity {
     private TextHighlightChanger lights;
     private String m_context;
     private String m_title; // 제목 넣어주시면 됩니다.
-
+    private String idx; // 수정시 필요한 게시글 고유 번호입니다.
+    private boolean mode;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
         SetActionBarLayout(R.layout.actionbar_editor);
-
-
-
     }
 
     @Override
@@ -46,6 +45,25 @@ public class EditorActivity extends BaseCustomBarActivity {
         lights.AddHighlight('#', "00ffff");
 
         SetEvents();
+
+
+        // 작성,수정을 구분하는 영역 (0: 작성, 1: 수정)
+        Intent intent = getIntent();
+        mode = intent.getBooleanExtra("mode",false);
+        if ( mode == true)
+        {
+            idx = intent.getStringExtra("idx");
+            ((EditText)findViewById(R.id.editText_title)).setText (intent.getStringExtra("subject"));
+            ((EditText)findViewById(R.id.editText_context)).setText (intent.getStringExtra("body"));
+            intent.getStringExtra("body");
+
+            // 버튼을 수정으로 만드는 명령어 넣을 곳
+        }
+        else
+        {
+            // 버튼을 작성으로 만드는 명령어 넣을 곳
+        }
+
         CreatePopUp();
     }
 
@@ -138,7 +156,10 @@ public class EditorActivity extends BaseCustomBarActivity {
     public void SubmitContext() {
         UpdateContext(null);
         m_title = TitleEditText.getText().toString();
-        sqlAdd();
+        if (mode == false)
+            sqlAdd();
+        else
+            sqlEdit();
         finish();
     }
 
@@ -155,7 +176,15 @@ public class EditorActivity extends BaseCustomBarActivity {
 
         db.execSQL(sql, arg1);
     }
+    public void sqlEdit(){
+        DBHelper helper = new DBHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String sql = "update TestTable2 set textSub = ?, textBody = ? where idx=" + idx;
 
+        String[] arg1 = {m_title, m_context};
+
+        db.execSQL(sql, arg1);
+    }
     //작성 중인 일기 내용을 여러 방면으로 업데이트하는 함수입니다.
     public void UpdateContext(String str) {
         m_context = str == null ? ContextEditText.getText().toString() : str;
