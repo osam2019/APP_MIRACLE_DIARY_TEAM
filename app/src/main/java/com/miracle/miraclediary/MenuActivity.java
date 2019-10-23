@@ -24,11 +24,6 @@ public class MenuActivity extends BaseCustomBarActivity {
         setContentView(R.layout.menu);
         mar();
 
-        DBHelper helper = new DBHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
-        DBManager.getInstance().setDB(db);
-        DBManager.getInstance().updateDB("TestTable");
-        DBManager.getInstance().updateDB("TestTable2");
     }
 
     @Override
