@@ -7,4 +7,4 @@ Android Version : at least Android 4.0.3 (IceCreamSandwich)
 
 ### Getting Started
 
-<img src="/readmeImg/mainView1.PNG" width="216px" height="384px" title="px(픽셀) 크기 설정" alt="a"></img>
+<img src="/readmeImg/mainView1.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
