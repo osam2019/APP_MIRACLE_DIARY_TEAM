@@ -7,4 +7,5 @@ Android Version : at least Android 4.0.3 (IceCreamSandwich)
 
 ### Getting Started
 
-<![Alt text](/readmeImg/mainView.PNG)
+![Alt text](/readmeImg/mainView.PNG)
+<img src="/readmeImg/mainView.PNG" width="450px" height="300px" title="px(픽셀) 크기 설정" alt="a"></img>
