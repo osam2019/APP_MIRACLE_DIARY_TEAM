@@ -13,6 +13,7 @@ import com.miracle.miraclediary.dialog.HabitEditorDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -135,7 +136,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
 
         int[] ids = {R.id.textView, R.id.textView2, R.id.textView3};
 
-        SimpleAdapter adapter = new SimpleAdapter(this, data_List, R.layout.row_diary, keys, ids);
+        SimpleAdapter adapter = new HighlightSimpleAdapter(this, data_List, R.layout.row_diary, keys, ids);
         list1.setAdapter(adapter);
     }
 

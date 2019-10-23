@@ -2,7 +2,6 @@ package com.miracle.miraclediary;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -25,6 +24,7 @@ public class EditorActivity extends BaseCustomBarActivity {
     private ImageButton BackButton;
     private EditText TitleEditText;
     private EditText ContextEditText;
+    private EditorTextWatcher textWatcher;
 
     private TextHighlightChanger lights;
     private String m_context;
@@ -42,7 +42,7 @@ public class EditorActivity extends BaseCustomBarActivity {
     protected void Init() {
 
         lights = new TextHighlightChanger();
-        lights.AddHighlight('#', "00ffff");
+        lights.AddHighlight('#', "#d86d1b");
 
         SetEvents();
 
@@ -78,12 +78,14 @@ public class EditorActivity extends BaseCustomBarActivity {
         //내용
         ContextEditText = findViewById(R.id.editText_context);
         ContextEditText.setText(INIT_STR);
+        textWatcher = new EditorTextWatcher(ContextEditText, lights, SubmitButton);
+        ContextEditText.addTextChangedListener(textWatcher);
 
         //등록버튼의 이벤트 리스너
         SubmitButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //텍스트를 받아온다.
-                SubmitContext();
+                SubmitContext(textWatcher.isInit());
             }
         });
 
@@ -153,7 +155,8 @@ public class EditorActivity extends BaseCustomBarActivity {
     }
 
     //작성 버튼을 눌렀을 시 발생하는 함수입니다.
-    public void SubmitContext() {
+    public void SubmitContext(boolean isCanSave) {
+        if(!isCanSave) return;
         UpdateContext(null);
         m_title = TitleEditText.getText().toString();
         if (mode == false)
@@ -172,7 +175,7 @@ public class EditorActivity extends BaseCustomBarActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String data = sdf.format(new Date());
 
-        String[] arg1 = {data, m_context, m_title};
+        String[] arg1 = {data, lights.SetHighlight(m_context), m_title};
 
         db.execSQL(sql, arg1);
     }
