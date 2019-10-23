@@ -12,6 +12,9 @@ import com.miracle.miraclediary.dialog.HabitEditorDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -19,7 +22,7 @@ import android.widget.SimpleAdapter;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class DiaryActivity extends AppCompatActivity {
+public class DiaryActivity extends BaseCustomBarActivity {
     ListView list1;
 
     DBHelper helper = new DBHelper(this);
@@ -29,9 +32,21 @@ public class DiaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary);
+        SetActionBarLayout(R.layout.actionbar_prev);
         db = helper.getWritableDatabase();
+        DBManager.getInstance().setDB(db);
+        DBManager.getInstance().updateDB("TestTable");
+        DBManager.getInstance().updateDB("TestTable2");
 
+        // Context Menu 구성
+        list1 = (ListView)findViewById(R.id.diaryList);
+        registerForContextMenu(list1);
+
+        // Sql
         sqlGet();
+
+
+
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
@@ -44,6 +59,38 @@ public class DiaryActivity extends AppCompatActivity {
             }
         });
     }
+    // Context 메뉴 구성
+    @Override
+    public void onCreateContextMenu(ContextMenu menu,
+                                    View v,
+                                    ContextMenu.ContextMenuInfo menuInfo)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.diary_menu, menu);
+    }
+
+    public boolean onContextItemSelected(MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.del:
+
+                return true;
+        }
+
+        return super.onContextItemSelected(item);
+    }
+
+    @Override
+    protected void Init() {
+        findViewById(R.id.actionbar_prev).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //텍스트를 받아온다.
+                finish();
+            }
+        });
+    }
+
     @Override
     protected void onResume()
     {
@@ -52,8 +99,7 @@ public class DiaryActivity extends AppCompatActivity {
     }
     public void sqlGet()
     {
-        // listView
-        list1 = (ListView)findViewById(R.id.diaryList);
+
 
         ArrayList<HashMap<String,Object>> data_List = new ArrayList<HashMap<String,Object>>();
 
