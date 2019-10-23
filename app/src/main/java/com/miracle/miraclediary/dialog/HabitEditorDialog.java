@@ -94,12 +94,12 @@ public class HabitEditorDialog extends AppCompatActivity {
         // Temp DbHelper
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
-        String sql = "insert into TestTable (textDate, textBody) values (?, ?)";
+        String sql = "insert into TestTable (textDate, textBody, mode) values (?, ?, ?)";
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         String data = sdf.format(new Date());
 
-        String [] arg1 = { data, m_context};
+        String [] arg1 = { data, m_context, "1"};
 
         db.execSQL(sql, arg1);
     }

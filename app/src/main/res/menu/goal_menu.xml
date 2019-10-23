@@ -6,4 +6,5 @@
     <item
         android:id="@+id/del"
         android:title="삭제하기" />
+
 </menu>
