@@ -66,8 +66,8 @@
             android:layout_weight="0"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="fitCenter"
-            android:scaleX="0.35"
-            android:scaleY="0.35"
+            android:scaleX="0.4"
+            android:scaleY="0.4"
             android:src="@drawable/ic_add" />
 
     </LinearLayout>

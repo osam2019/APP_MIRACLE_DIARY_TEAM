@@ -8,17 +8,74 @@
 
 
     <include layout="@layout/content_goal" />
-    <ListView
-        android:id="@+id/goalList"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/splash_icon" />
+    >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="1dp"
+            >
+
+            <EditText
+                android:id="@+id/content"
+                android:layout_width="0dp"
+                android:layout_weight="30"
+                android:layout_height="match_parent"
+                android:background="#FFFFFF"
+                android:padding="20dp"
+                android:fontFamily="@font/nsb"
+
+                android:inputType="textMultiLine"
+                android:text="습관 목록을 등록해볼까요?"
+                android:textSize="24sp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Write"
+                android:background="#FFFFFF"
+                android:onClick="sqlAdd"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#FFFFFF"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/chkImportant"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="50dp"
+                android:gravity="center"
+                android:text="중요" />
+
+            <CheckBox
+                android:id="@+id/chkRepeat"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="50dp"
+                android:gravity="center"
+                android:text="반복" />
+
+        </LinearLayout>>
+        <ListView
+            android:id="@+id/goalList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

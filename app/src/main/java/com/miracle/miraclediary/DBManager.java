@@ -8,13 +8,14 @@ import java.util.HashMap;
 
 public class DBManager {
 
-    public enum TYPE { IDX, DATE, CONTEXT };
+    public enum TYPE { IDX, DATE, CONTEXT, TEXTSUB };
 
     private SQLiteDatabase db = null;
 
     private HashMap<String, ArrayList<String>> idx = null;
     private HashMap<String, ArrayList<String>> date = null;
     private HashMap<String, ArrayList<String>> context = null;
+    private HashMap<String, ArrayList<String>> textSub = null;
 
     private boolean isNotification = false;
 
@@ -70,6 +71,7 @@ public class DBManager {
         idx = new HashMap<>();
         date = new HashMap<>();
         context = new HashMap<>();
+        textSub = new HashMap<>();
     }
 
     public ArrayList<String> GetData(String table, DBManager.TYPE type) {
@@ -80,6 +82,8 @@ public class DBManager {
                 return date.get(table);
             case CONTEXT:
                 return context.get(table);
+            case TEXTSUB:
+                return textSub.get(table);
         }
         return null;
     }
@@ -95,26 +99,32 @@ public class DBManager {
             idx.get(table).clear();
             date.get(table).clear();
             context.get(table).clear();
+            textSub.get(table).clear();
         }
         else{
             idx.put(table, new ArrayList<String>());
             date.put(table, new ArrayList<String>());
             context.put(table, new ArrayList<String>());
+            textSub.put(table, new ArrayList<String>());
         }
 
         ArrayList idx_arr = idx.get(table);
         ArrayList date_arr = date.get(table);
         ArrayList context_arr = context.get(table);
+        ArrayList textSub_arr = textSub.get(table);
 
 
         while (c.moveToNext()) {
             int idx_pos = c.getColumnIndex("idx");
             int textDate = c.getColumnIndex("textDate");
             int textBody = c.getColumnIndex("textBody");
+            int textSub = c.getColumnIndex("textSub");
 
             idx_arr.add(c.getString(idx_pos));
             date_arr.add(c.getString(textDate));
             context_arr.add(c.getString(textBody));
+            if(textSub > -1)
+                textSub_arr.add(c.getString(textSub));
 
         }
 

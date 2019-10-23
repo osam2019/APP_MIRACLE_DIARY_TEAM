@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:fontFamily="@font/handwriting1"
-        android:text="습관 목록이 비었어요!\n한번 도전해볼까요?"
+
+        android:lineSpacingMultiplier="1.3"
         android:textAlignment="center"
         android:textSize="36sp"
         android:textStyle="bold"
