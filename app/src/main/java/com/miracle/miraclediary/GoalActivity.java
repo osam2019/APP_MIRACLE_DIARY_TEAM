@@ -18,6 +18,7 @@ import android.view.ContextMenu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -138,6 +139,10 @@ public class GoalActivity extends BaseCustomBarActivity {
 
     }
     public void sqlGet() {
+
+        EditText et = findViewById(R.id.content);
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
 
         ArrayList<HashMap<String, Object>> data_List = new ArrayList<HashMap<String, Object>>();
 

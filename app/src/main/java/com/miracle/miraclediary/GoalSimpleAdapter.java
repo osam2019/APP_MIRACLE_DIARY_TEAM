@@ -1,6 +1,8 @@
 package com.miracle.miraclediary;
 
 import android.content.Context;
+import android.graphics.ColorMatrix;
+import android.graphics.ColorMatrixColorFilter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +20,16 @@ public class GoalSimpleAdapter extends SimpleAdapter {
 
     /**
      * Constructor
-     *  @param context  The context where the View associated with this SimpleAdapter is running
-     * @param data     A List of Maps. Each entry in the List corresponds to one row in the list. The
-     *                 Maps contain the data for each row, and should include all the entries specified in
-     *                 "from"
-     * @param resource Resource identifier of a view layout that defines the views for this list
- *                 item. The layout file should include at least those named views defined in "to"
-     * @param from     A list of column names that will be added to the Map associated with each
-*                 item.
-     * @param to       The views that should display column in the "from" parameter. These should all be
+     *
+     * @param context    The context where the View associated with this SimpleAdapter is running
+     * @param data       A List of Maps. Each entry in the List corresponds to one row in the list. The
+     *                   Maps contain the data for each row, and should include all the entries specified in
+     *                   "from"
+     * @param resource   Resource identifier of a view layout that defines the views for this list
+     *                   item. The layout file should include at least those named views defined in "to"
+     * @param from       A list of column names that will be added to the Map associated with each
+     *                   item.
+     * @param to         The views that should display column in the "from" parameter. These should all be
      * @param isFinished
      */
     public GoalSimpleAdapter(Context context, List<? extends Map<String, ?>> data, int resource,
@@ -41,13 +44,15 @@ public class GoalSimpleAdapter extends SimpleAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = super.getView(position, convertView, parent);
 
-        char mode[] = null;
+        char[] mode = null;
         boolean isImportant;
+        boolean isEveryday;
         boolean isFinished;
 
         try {
             mode = modes.get(position).toCharArray();
             isImportant = mode[0] == '1';
+            isEveryday = mode[1] == '1';
             isFinished = this.isFinished.get(modes.size() - position - 1);
 
         } catch (Exception e) {
@@ -57,14 +62,25 @@ public class GoalSimpleAdapter extends SimpleAdapter {
 
         ImageView icon = view.findViewById(R.id.goal_icon);
 
-        int _id = R.drawable.goal_icon_no_imp;
+        int _id = R.drawable.goal_icon_normal;
 
-        if (isImportant) {
+        if (isImportant && isEveryday) {
+            _id = R.drawable.goal_icon_both;
+        } else if (isImportant) {
             _id = R.drawable.goal_icon_imp;
+        } else if (isEveryday) {
+            _id = R.drawable.goal_icon_loop;
         }
+
         if (isFinished) {
-            _id = R.drawable.goal_icon_clear;
+            ColorMatrix matrix = new ColorMatrix();
+            matrix.setSaturation(0);
+            ColorMatrixColorFilter cf = new ColorMatrixColorFilter(matrix);
+            icon.setColorFilter(cf);
+        } else {
+            icon.clearColorFilter();
         }
+
         icon.setImageResource(_id);
 
         return view;

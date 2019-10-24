@@ -47,46 +47,54 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="20dp"
+        android:layout_height="match_parent"
         android:layout_weight="0"
+        android:background="?attr/selectableItemBackground"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0"
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/goal_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="10dp"
-                app:srcCompat="@drawable/profile_icon_default" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/goal_icon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="10dp"
+                    app:srcCompat="@drawable/profile_icon_default" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/nsb"
+                    android:text="\@Developer"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/nsb"
-                android:text="\@Developer"
-                android:textSize="18sp" />
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/rounded_corner"
+                android:fontFamily="@font/nbb"
+                android:gravity="center"
+                android:text="테스트라는 글씨다" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@drawable/rounded_corner"
-            android:fontFamily="@font/nbb"
-            android:gravity="center"
-            android:text="테스트라는 글씨다" />
-
     </LinearLayout>
 
     <ImageView
