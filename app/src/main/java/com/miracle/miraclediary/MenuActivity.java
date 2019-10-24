@@ -148,7 +148,7 @@ public class MenuActivity extends BaseCustomBarActivity {
 //        text.setSelected(true);
 //    }
     void level(ArrayList date) {
-        int level = date.size() / 5;
+        int level = DBManager.getInstance().GetLevel();
         int exp = (date.size() % 5);
 
         textView = findViewById(R.id.levelView);
