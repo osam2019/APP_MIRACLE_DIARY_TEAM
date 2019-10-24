@@ -103,13 +103,23 @@ public class GoalActivity extends BaseCustomBarActivity {
         // Temp DbHelper
         int level = DBManager.getInstance().GetLevel();
         int contextnum = DBManager.getInstance().GetContextNum() + 1;
+
+        // 키보드 없애기
+        EditText et = findViewById(R.id.content);
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(et.getWindowToken(), 0);
+
         // if(level == 0) {
             if(contextnum <= level+2) {
                 sqlAddBase();
+                et.setText("");
             }
             else{
                 Toast.makeText(GoalActivity.this,"아직 레벨이 낮습니다.", Toast.LENGTH_SHORT).show();
             }
+
+
+
         // }
     }
 
