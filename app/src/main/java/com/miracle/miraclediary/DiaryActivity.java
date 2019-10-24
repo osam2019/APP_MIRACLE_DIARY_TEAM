@@ -24,6 +24,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
     ListView list1;
     TabLayout tab;
     ArrayList<String> temp; // idx
+    ArrayList<String> current_temp;
     ArrayList<String> arrSub;
     ArrayList<String> arrBody;
     DBHelper helper = new DBHelper(this);
@@ -71,16 +72,22 @@ public class DiaryActivity extends BaseCustomBarActivity {
 
     public boolean onContextItemSelected(MenuItem item) {
         String sql = "";
-        String[] args = {temp.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position)};
-        // Log.d("aaa",temp.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
+
+
+        int item_index = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
+        int index = Integer.parseInt(current_temp.get(current_temp.size() - item_index - 1)) - 1;
+
+        String[] args = {temp.get(index)};
+//        Log.e("aaa", "html = " + Html.fromHtml(arrBody.get(temp.size() - index - 1)));
         switch (item.getItemId()) {
 
             case R.id.edit:
                 Intent edit = new Intent(DiaryActivity.this, EditorActivity.class);
                 edit.putExtra("mode", true);
                 edit.putExtra("idx", args[0]);
-                edit.putExtra("subject", arrSub.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
-                edit.putExtra("body", Html.fromHtml(arrBody.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position)).toString());
+                edit.putExtra("subject", arrSub.get(temp.size() - index - 1));
+                String body_str = Html.fromHtml(arrBody.get(temp.size() - index - 1)).toString();
+                edit.putExtra("body", body_str);
                 startActivity(edit);
                 return true;
             case R.id.del:
@@ -140,11 +147,13 @@ public class DiaryActivity extends BaseCustomBarActivity {
 
     //임시로 만든 함수입니다.
     public void sqlGet(int level) {
+        ArrayList idx = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.IDX);
         ArrayList date = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
         ArrayList context = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.CONTEXT);
         ArrayList subtext = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.TEXTSUB);
 
         ArrayList<HashMap<String, Object>> data_List = new ArrayList<HashMap<String, Object>>();
+        current_temp = new ArrayList<>();
 
 
         for (int i = level * 5; i < date.size() && i < (level + 1) * 5; i++) {
@@ -155,6 +164,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
             map.put("data3", subtext.get(i));
 
             data_List.add(0, map);
+            current_temp.add((String) idx.get(i));
         }
 
         String[] keys = {"data1", "data2", "data3"};
