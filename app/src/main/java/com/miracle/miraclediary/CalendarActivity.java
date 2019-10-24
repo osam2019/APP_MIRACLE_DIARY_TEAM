@@ -3,6 +3,7 @@ package com.miracle.miraclediary;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +26,7 @@ public class CalendarActivity extends BaseCustomBarActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar_layout);
+        SetActionBarLayout(R.layout.actionbar_prev);
         materialCalendarView = findViewById(R.id.calendarView);
         materialCalendarView.setDateTextAppearance(R.style.CalendarWidgetHeader);
         materialCalendarView.state().edit()
@@ -45,6 +47,12 @@ public class CalendarActivity extends BaseCustomBarActivity {
 
     @Override
     protected void Init() {
+        findViewById(R.id.actionbar_prev).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //텍스트를 받아온다.
+                finish();
+            }
+        });
     }
 
     private class ApiSimulator extends AsyncTask<Void, Void, List<CalendarDay>> {
