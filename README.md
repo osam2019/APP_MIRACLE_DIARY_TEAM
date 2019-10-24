@@ -11,20 +11,30 @@ Android Version : at least Android API Level 26 (Oreo)
 
 ## 사용법 (Getting Started)
 
-<img src="/readmeImg/mainView1.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
-<img src="/readmeImg/edit.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+<img src="/readmeImg/메인화면1.png" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+<img src="/readmeImg/.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
 
 첫 번째 탭을 눌러서 길들일 습관을 입력합니다.
 
-<img src="/readmeImg/mainView2.png" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
-<img src="/readmeImg/datalist.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+<img src="/readmeImg/메인화면2.png" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+<img src="/readmeImg/일기장.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
 
 두 번째 탭을 눌러 오늘 할 일을 입력합니다.
 
-<img src="/readmeImg/mainView3.png" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
-<img src="/readmeImg/alarm.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+<img src="/readmeImg/메인화면3.png" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+<img src="/readmeImg/알람.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
 
-세 번째 탭을 눌러 알람을 설정합니다. 오늘 습관을 길들였는지, 할 일을 했는지 확인하기 위함입니다.
+세 번째 탭을 눌러 알람을 설정합니다. 오늘 습관을 길들였는지, 할 일을 했는지 확인하기 위함입니다
+
+<img src="/readmeImg/메인화면4.png" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+<img src="/readmeImg/캘린더.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+
+네 번째 탭을 눌러 기록한 일기들을 확인합니다. 얼마나 일기를 꾸준하게 썼는지, 언제 어떤 일기를 썼는지.
+
+<img src="/readmeImg/알림1.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+<img src="/readmeImg/알림2.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+
+설정한 알림을 받으면 습관에 관한 명언을 함께 볼 수 있습니다.
 
 ## 파일 정보 및 목록 (File Manifest)
 
