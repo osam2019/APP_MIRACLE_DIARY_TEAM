@@ -77,7 +77,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
         int item_index = ((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position;
         int index = Integer.parseInt(current_temp.get(current_temp.size() - item_index - 1)) - 1;
 
-        String[] args = {temp.get(index)};
+        String[] args = {temp.get(temp.size() - index - 1)};
 //        Log.e("aaa", "html = " + Html.fromHtml(arrBody.get(temp.size() - index - 1)));
         switch (item.getItemId()) {
 
