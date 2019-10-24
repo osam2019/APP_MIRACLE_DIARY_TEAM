@@ -7,7 +7,9 @@ import android.view.View;
 import android.text.Html;
 import android.widget.Adapter;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Executors;
 
@@ -55,20 +58,37 @@ public class CalendarActivity extends BaseCustomBarActivity {
                 DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 String targetDate = dateFormat.format(date.getDate().getTime());
                 String contextStr = "";
-                ArrayList<String> list = new ArrayList<>();
 
+
+ //               ArrayList<String> list = new ArrayList<>();
+
+                ArrayList<HashMap<String, Object>> data_List = new ArrayList<HashMap<String, Object>>();
                 for(int i = 0, count = 0; i < dates.size(); i++) {
                     if(targetDate.equals(dates.get(i))) {
                         count++;
+
                         contextStr = titles.get(i) + "\n";
                         //contextStr += contexts.get(i);
+                        HashMap<String, Object> map = new HashMap<String, Object>();
+                        map.put("data1", "");
+                        map.put("data2", contexts.get(i));
+                        map.put("data3", titles.get(i));
+                        // map.put("idx", c.getString(idx_pos));
 
-                        list.add(contextStr);
+                        data_List.add(0, map);
+
+  //                      list.add(contextStr);
                     }
                 }
+                String[] keys = {"data1", "data2", "data3"};
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(CalendarActivity.this,android.R.layout.simple_list_item_1,list);
+                int[] ids = {R.id.textView, R.id.textView2, R.id.textView3};
+
+                SimpleAdapter adapter = new HighlightSimpleAdapter(CalendarActivity.this, data_List, R.layout.row_cal, keys, ids);
+                //ArrayAdapter<String> adapter = new ArrayAdapter<String>(CalendarActivity.this,android.R.layout.simple_list_item_1,list);
                 ListView conte = findViewById(R.id.list);
+
+
                 conte.setAdapter(adapter);
 //                TextView context = findViewById(R.id.calendar_context);
 //                context.setText(Html.fromHtml(contextStr));

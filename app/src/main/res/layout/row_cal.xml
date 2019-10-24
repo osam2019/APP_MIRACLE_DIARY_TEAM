@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+    <!--        <ImageView-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:adjustViewBounds="true"-->
+    <!--            android:src="@drawable/img_view"/>-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/textView"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="110dp"-->
+    <!--            android:layout_marginEnd="25dp"-->
+    <!--            android:visibility="invisible"-->
+    <!--            android:gravity="center_vertical|right"-->
+    <!--            android:fontFamily="@font/nsb"-->
+    <!--            android:text="Date" />-->
+    <!--        <TextView-->
+    <!--            android:id="@+id/textView2"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="110dp"-->
+    <!--            android:layout_marginTop="75dp"-->
+    <!--            android:layout_marginHorizontal="25dp"-->
+    <!--            android:gravity="center_vertical|center"-->
+    <!--            android:fontFamily="@font/nsb"-->
+    <!--            android:text="Date" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/textView3"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="60dp"-->
+    <!--            android:layout_marginStart="70dp"-->
+    <!--            android:gravity="center_vertical"-->
+    <!--            android:fontFamily="@font/nsb"-->
+    <!--            android:textAppearance="@style/TextAppearance.AppCompat.Large"-->
+    <!--            android:text="\@Developer" />-->
+    <!--    </RelativeLayout>-->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="20dp"
+        android:layout_weight="0"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/goal_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                app:srcCompat="@drawable/profile_icon_default" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/nsb"
+                android:text="\@Developer"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/textIdx"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="idex"
+                />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_weight="0.2"
+                app:srcCompat="@drawable/profile_context_date" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_corner"
+            android:fontFamily="@font/nbb"
+            android:gravity="center"
+            android:text="테스트라는 글씨다" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_weight="0"
+        android:background="@drawable/profile_context_bezel" />
+
+
+</LinearLayout>
