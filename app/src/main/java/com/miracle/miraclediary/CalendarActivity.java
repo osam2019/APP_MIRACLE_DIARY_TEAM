@@ -60,9 +60,9 @@ public class CalendarActivity extends BaseCustomBarActivity {
                 for(int i = 0, count = 0; i < dates.size(); i++) {
                     if(targetDate.equals(dates.get(i))) {
                         count++;
-                        contextStr += titles.get(i) + "\n";
+                        contextStr = titles.get(i) + "\n";
                         //contextStr += contexts.get(i);
-                        
+
                         list.add(contextStr);
                     }
                 }
