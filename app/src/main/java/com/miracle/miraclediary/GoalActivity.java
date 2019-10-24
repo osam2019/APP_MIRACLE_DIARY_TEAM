@@ -103,14 +103,14 @@ public class GoalActivity extends BaseCustomBarActivity {
         // Temp DbHelper
         int level = DBManager.getInstance().GetLevel();
         int contextnum = DBManager.getInstance().GetContextNum() + 1;
-        if(level == 0) {
+        // if(level == 0) {
             if(contextnum <= level+2) {
                 sqlAddBase();
             }
             else{
                 Toast.makeText(GoalActivity.this,"아직 레벨이 낮습니다.", Toast.LENGTH_SHORT).show();
             }
-        }
+        // }
     }
 
     public  void sqlAddBase()                                                   //습관을 습관 리스트에 추가합니다.
