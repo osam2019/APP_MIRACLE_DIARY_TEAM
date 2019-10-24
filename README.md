@@ -3,10 +3,10 @@
 습관과 할 일을 정리하는 일기장을 App으로 구현했습니다.
 
 ## 컴퓨터 구성 / 필수 조건 (Prerequisites)
-Android Version : at least Android 4.0.3 (IceCreamSandwich)
+Android Version : at least Android API Level 26 (Oreo)
 
 ## 설치 (Installation Process)
-
+<a href="/readmeApk/MiracleDiary.apk">미라클 다이어리 다운로드</a>
 
 
 ## 사용법 (Getting Started)
@@ -36,9 +36,9 @@ Android Version : at least Android 4.0.3 (IceCreamSandwich)
 
 이준호 : lhsljh456@naver.com
 
-이진영 :
+이진영 : asdfounols@naver.com
 
-차재명 :
+차재명 : maxcha98@naver.com
 
 정홍주 : sub06038@naver.com
 
