@@ -94,7 +94,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
                 sql = "delete from TestTable2 where idx=?";
 
                 db.execSQL(sql, args);
-                sqlGet();
+                sqlGet(tab_level);
                 return true;
         }
 
