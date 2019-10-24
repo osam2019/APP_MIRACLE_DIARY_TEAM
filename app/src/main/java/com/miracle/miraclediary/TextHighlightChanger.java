@@ -28,9 +28,13 @@ public class TextHighlightChanger {
 
                result += "<font color=\'" + color + "\'>";
                isHighlight = true;
-            }else if(isHighlight && result_c[i] == ' ') {
+            }else if(isHighlight && result_c[i] == ' ' || result_c[i] == '\n') {
                 isHighlight = false;
                 result += "</font>";
+            }
+
+            if(result_c[i] == '\n') {
+                result += "<br/>";
             }
 
             result += result_c[i];

@@ -53,6 +53,8 @@
                 android:fontFamily="@font/nbb"
                 android:gravity="center_vertical"
                 android:inputType="textPersonName"
+                android:maxLength="10"
+                android:singleLine="true"
                 android:text="제목"
                 android:textSize="30sp" />
         </LinearLayout>

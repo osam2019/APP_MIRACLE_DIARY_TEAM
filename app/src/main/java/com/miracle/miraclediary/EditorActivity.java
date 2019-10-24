@@ -101,7 +101,7 @@ public class EditorActivity extends BaseCustomBarActivity {
                 if (hasFocus) {
                     UpdateContext(null);
                     if (m_context.equals(INIT_STR)) {
-                        //UpdateContext("");
+                        UpdateContext("");
                     }
                 } else {
                     UpdateContext(null);
@@ -184,7 +184,7 @@ public class EditorActivity extends BaseCustomBarActivity {
         SQLiteDatabase db = helper.getWritableDatabase();
         String sql = "update TestTable2 set textSub = ?, textBody = ? where idx=" + idx;
 
-        String[] arg1 = {m_title, m_context};
+        String[] arg1 = {m_title, lights.SetHighlight(m_context)};
 
         db.execSQL(sql, arg1);
     }

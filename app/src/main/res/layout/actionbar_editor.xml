@@ -67,8 +67,8 @@
             android:alpha="0.4"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:scaleType="fitCenter"
-            android:scaleX="0.35"
-            android:scaleY="0.35"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
             app:srcCompat="@drawable/save" />
 
     </LinearLayout>

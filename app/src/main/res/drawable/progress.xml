@@ -6,17 +6,25 @@
             android:shape="ring"
             android:useLevel="false"
             android:thickness="15dp">
-            <solid android:color="@color/colorAccent"/>
+<!--            <solid android:color="@color/colorAccent"/>-->
+            <solid android:color="#320A0909"/>
         </shape>
     </item>
 
-    <item android:id="@android:id/progress">
+    <!--<item android:id="@android:id/progress">-->
+    <item>
+
         <shape
             android:innerRadiusRatio="2.55"
             android:shape="ring"
             android:thickness="15dp">
-            <solid android:color="#FFFFFF"/>
+            <corners android:radius="3dp"/>
+            <gradient android:type="sweep"
+                android:startColor="#F5967B"
+                android:endColor="#FF5722"/>
+<!--            <solid android:color="#FFFFFF"/>-->
         </shape>
+
     </item>
     <item android:left="337dp">
         <shape
@@ -24,19 +32,22 @@
             android:shape="ring"
             android:thickness="7dp"
             android:useLevel="false">
-            <solid android:color="#FFFFFF"/>
+            <solid android:color="#F5967B"/>
         </shape>
     </item>
-    <item android:left="337dp">
+    <item>
         <rotate>
-            <shape
-                android:innerRadiusRatio="1000"
-                android:shape="ring"
-                android:thickness="7dp"
-                android:useLevel="false">
-                <solid android:color="#FFFFFF"/>
-            </shape>
+            <inset android:insetLeft="337dp">
+                <shape
+                    android:innerRadiusRatio="1000"
+                    android:shape="ring"
+                    android:thickness="7dp"
+                    android:useLevel="false">
+                    <solid android:color="#FF5722"/>
+                </shape>
+            </inset>
         </rotate>
     </item>
+
 
 </layer-list>
