@@ -23,6 +23,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -78,7 +79,7 @@ public class GoalActivity extends BaseCustomBarActivity {
 
     public boolean onContextItemSelected(MenuItem item) {
         String sql = "";
-        String args[] = {temp.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position)};
+        String args[] = {temp.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position)};   //글씨 쓰는 부분
         // Log.d("aaa",temp.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
         switch (item.getItemId()) {
             case R.id.ach:
@@ -97,23 +98,35 @@ public class GoalActivity extends BaseCustomBarActivity {
 
         return super.onContextItemSelected(item);
     }
-    public void sqlAdd(View view) {
+    public void sqlAdd(View view) {                                                     //레벨 별로 갯수를 제한합니다.
         // Temp DbHelper
+        int level = DBManager.getInstance().GetLevel();
+        int contextnum = DBManager.getInstance().GetContextNum() + 1;
+        if(level == 0) {
+            if(contextnum <= level+2) {
+                sqlAddBase();
+            }
+            else{
+                Toast.makeText(GoalActivity.this,"아직 레벨이 낮습니다.", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    public  void sqlAddBase()                                                   //습관을 습관 리스트에 추가합니다.
+    {
         DBHelper helper = new DBHelper(this);
         SQLiteDatabase db = helper.getWritableDatabase();
         String sql = "insert into TestTable (textDate, textBody, mode) values (?, ?, ?)";
         String mode = (((CheckBox)findViewById(R.id.chkImportant)).isChecked() == true) ? "1" : "0";
         mode = mode + ((((CheckBox)findViewById(R.id.chkRepeat)).isChecked() == true) ? "1" : "0");
-
-
         String data = "1997-11-24";
         String m_context = ((EditText) findViewById(R.id.content)).getText().toString();
         String [] arg1 = { data, m_context, mode};
 
         db.execSQL(sql, arg1);
         sqlGet();
-
     }
+
     // 목표 달성시
     public void doneGoal(boolean dailyType, String idx)
     {
