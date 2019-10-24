@@ -4,15 +4,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.tabs.TabLayout;
-import com.miracle.miraclediary.dialog.HabitEditorDialog;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.text.Html;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -22,7 +13,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,7 +43,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
 
 
         // Context Menu 구성
-        list1 = (ListView) findViewById(R.id.diaryList);
+        list1 = findViewById(R.id.diaryList);
         registerForContextMenu(list1);
         // Sql
         sqlGet();
@@ -61,7 +54,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
             @Override
             public void onClick(View view) {
                 Intent regist = new Intent(DiaryActivity.this, EditorActivity.class);
-                regist.putExtra("mode",false);
+                regist.putExtra("mode", false);
                 startActivity(regist);
             }
         });
@@ -78,16 +71,16 @@ public class DiaryActivity extends BaseCustomBarActivity {
 
     public boolean onContextItemSelected(MenuItem item) {
         String sql = "";
-        String args[] = {temp.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position)};
+        String[] args = {temp.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position)};
         // Log.d("aaa",temp.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
         switch (item.getItemId()) {
 
             case R.id.edit:
                 Intent edit = new Intent(DiaryActivity.this, EditorActivity.class);
-                edit.putExtra("mode",true);
-                edit.putExtra("idx",args[0]);
-                edit.putExtra("subject",arrSub.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
-                edit.putExtra("body",Html.fromHtml(arrBody.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position)).toString());
+                edit.putExtra("mode", true);
+                edit.putExtra("idx", args[0]);
+                edit.putExtra("subject", arrSub.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position));
+                edit.putExtra("body", Html.fromHtml(arrBody.get(((AdapterView.AdapterContextMenuInfo) item.getMenuInfo()).position)).toString());
                 startActivity(edit);
                 return true;
             case R.id.del:
@@ -129,8 +122,8 @@ public class DiaryActivity extends BaseCustomBarActivity {
             map.put("data3", c.getString(textSub));
             // map.put("idx", c.getString(idx_pos));
 
-            arrSub.add(0,c.getString(textSub));
-            arrBody.add(0,c.getString(textBody));
+            arrSub.add(0, c.getString(textSub));
+            arrBody.add(0, c.getString(textBody));
             temp.add(0, c.getString(idx_pos));
 
 
@@ -154,7 +147,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
         ArrayList<HashMap<String, Object>> data_List = new ArrayList<HashMap<String, Object>>();
 
 
-        for(int i = level * 5; i < date.size() && i < (level + 1) * 5; i++) {
+        for (int i = level * 5; i < date.size() && i < (level + 1) * 5; i++) {
 
             HashMap<String, Object> map = new HashMap<String, Object>();
             map.put("data1", date.get(i));
@@ -186,7 +179,7 @@ public class DiaryActivity extends BaseCustomBarActivity {
     private void InitTab() {
         tab = findViewById(R.id.diary_tab);
         ArrayList idxs = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.IDX);
-        for (int i = 0, index = 0; i <= idxs.size(); i+=5, index++) {
+        for (int i = 0, index = 0; i <= idxs.size(); i += 5, index++) {
             tab.addTab(tab.newTab().setText("Level " + index));
         }
         tab_level = idxs.size() / 5;
@@ -199,10 +192,12 @@ public class DiaryActivity extends BaseCustomBarActivity {
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {}
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
 
             @Override
-            public void onTabReselected(TabLayout.Tab tab) {}
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
         });
 
         sqlGet(tab_level);
