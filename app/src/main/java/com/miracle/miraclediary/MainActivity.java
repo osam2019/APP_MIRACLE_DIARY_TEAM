@@ -138,9 +138,16 @@ public class MainActivity extends BaseCustomBarActivity {
                 //button.setText ("저녁 설정");
                 ((TextView)findViewById(R.id.tv1)).setText("하루를 마무리 할 시간을 설정해주세요!\n알람을 설정해드립니다.");
                 if (foo == 2) {
+                    calendar.set(Calendar.HOUR_OF_DAY, 12);
+                    calendar.set(Calendar.MINUTE, 0);
+                    calendar.set(Calendar.SECOND, 0);
+
+                    // 12시 할일 알람 구현
+                    diaryNotification(calendar, foo);
                     Intent c = new Intent(MainActivity.this, MenuActivity.class);
                     c.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(c);
+
                 }
 
                 if(count == 1){
