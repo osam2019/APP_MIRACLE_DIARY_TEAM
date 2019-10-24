@@ -4,6 +4,11 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.text.Html;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +18,8 @@ import com.prolificinteractive.materialcalendarview.CalendarMode;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -41,6 +48,30 @@ public class CalendarActivity extends BaseCustomBarActivity {
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                ArrayList dates = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
+                ArrayList contexts = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.CONTEXT);
+                ArrayList titles = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.TEXTSUB);
+                final Calendar cal = Calendar.getInstance();
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String targetDate = dateFormat.format(date.getDate().getTime());
+                String contextStr = "";
+                ArrayList<String> list = new ArrayList<>();
+
+                for(int i = 0, count = 0; i < dates.size(); i++) {
+                    if(targetDate.equals(dates.get(i))) {
+                        count++;
+                        contextStr += titles.get(i) + "\n";
+                        //contextStr += contexts.get(i);
+                        
+                        list.add(contextStr);
+                    }
+                }
+
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(CalendarActivity.this,android.R.layout.simple_list_item_1,list);
+                ListView conte = findViewById(R.id.list);
+                conte.setAdapter(adapter);
+//                TextView context = findViewById(R.id.calendar_context);
+//                context.setText(Html.fromHtml(contextStr));
             }
         });
     }
