@@ -42,6 +42,8 @@ Android Version : at least Android API Level 26 (Oreo)
 
 ## 저작권 및 사용권 (Copyright / End User License)
 
+Material Calendar View is Copyright (c) 2018 Prolific Interactive. It may be redistributed under the terms specified in the LICENSE file.//https://github.com/prolificinteractive/material-calendarview
+
 ## 배포자 및 개발자의 연락처 정보 (Contact Information)
 
 이준호 : lhsljh456@naver.com
@@ -55,7 +57,8 @@ Android Version : at least Android API Level 26 (Oreo)
 ## 알려진 버그 (Known Issues)
 
 ## 문제 발생에 대한 해결책 (Troubleshooting)
-
+개발자 이메일로 버그내용을 보내주시기 바랍니다.
 ## 크레딧 (Credit)
 
 ## 업데이트 정보 (Change Log)
+version-alpha (2019/10/24)
