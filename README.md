@@ -6,7 +6,7 @@
 Android Version : at least Android API Level 26 (Oreo)
 
 ## 설치 (Installation Process)
-<a href="/readmeApk/MiracleDiary.apk">미라클 다이어리 다운로드</a>
+<a href="https://github.com/ounols/Miracle-Diary/blob/master/MiracleDiary.apk?raw=true">미라클 다이어리 다운로드</a>
 
 
 ## 사용법 (Getting Started)
