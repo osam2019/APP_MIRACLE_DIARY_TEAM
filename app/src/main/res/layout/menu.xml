@@ -188,9 +188,9 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="?attr/selectableItemBackground"
+            android:onClick="goToCalendar"
             android:paddingTop="20sp"
             android:paddingBottom="20sp"
-            android:onClick="goToCalendar"
             android:scaleType="centerInside"
             app:srcCompat="@drawable/statics" />
 

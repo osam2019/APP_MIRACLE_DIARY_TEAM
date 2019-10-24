@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class DBManager {
 
-    public enum TYPE { IDX, DATE, CONTEXT, TEXTSUB };
+    public enum TYPE { IDX, DATE, CONTEXT, TEXTSUB };     //   DATE = 일기
 
     private SQLiteDatabase db = null;
 
@@ -86,6 +86,23 @@ public class DBManager {
                 return textSub.get(table);
         }
         return null;
+    }
+
+    public int GetLevel() {                                                                 //레벨을 구합니다.
+        int level;
+        DBManager.getInstance().updateDB("TestTable2");
+        ArrayList dates = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
+        level = dates.size()/5;
+        return  level;
+
+    }
+
+    public int GetContextNum() {                                                            //습관 갯수를 구합니다.
+        int contextnum;
+        DBManager.getInstance().updateDB("TestTable");
+        ArrayList contexts = DBManager.getInstance().GetData("TestTable", DBManager.TYPE.CONTEXT);
+        contextnum = contexts.size();
+        return contextnum;
     }
 
     public boolean updateDB(String table) {
