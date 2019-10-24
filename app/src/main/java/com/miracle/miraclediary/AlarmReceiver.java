@@ -7,14 +7,18 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Random;
 
@@ -83,16 +87,45 @@ public class AlarmReceiver extends BroadcastReceiver {
         if(random>=goodWords.length){
             random = goodWords.length-1;
         }
-        String temp_str = flag == 0 ? "아침" : "저녁";
-        builder.setAutoCancel(true)
-                .setDefaults(NotificationCompat.DEFAULT_ALL)
-                .setWhen(System.currentTimeMillis())
-                .setTicker(temp_str + " 일기를 작성할 시간이에요!")
-                .setContentTitle(temp_str + " 일기를 작성할 시간이에요.\n산뜻한 " + temp_str + "을 시작해봐요!")
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(goodWords[random]))
-                .setContentInfo("INFO")
-                .setContentIntent(pendingI);
+        if (flag==2)
+        {
+            ArrayList<HashMap<String, Object>> data_List = new ArrayList<HashMap<String, Object>>();
 
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            String data = sdf.format(new Date());
+
+            ArrayList<String> temp = new ArrayList<>();
+            DBHelper helper = new DBHelper(context);
+            SQLiteDatabase db = helper.getWritableDatabase();;
+
+            String sql = "select * from TestTable where textDate != \"" + data + "\" and (mode=\"11\" or mode=\"10\");";
+
+            Cursor c = db.rawQuery(sql, null);
+
+            int count=0;
+            while (c.moveToNext()) {
+                count++;
+            }
+            //if (count == 0) return;
+            builder.setAutoCancel(true)
+                    .setDefaults(NotificationCompat.DEFAULT_ALL)
+                    .setWhen(System.currentTimeMillis())
+                    .setTicker("오늘 할 중요한 일이 남아있어요!")
+                    .setContentTitle("오늘 할 중요한 일이 " + count + "개 남아있어요.\n확인해서 성취해주세요!")
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(goodWords[random]))
+                    .setContentInfo("INFO")
+                    .setContentIntent(pendingI);
+        }else{
+            String temp_str = flag == 0 ? "아침" : "저녁";
+            builder.setAutoCancel(true)
+                    .setDefaults(NotificationCompat.DEFAULT_ALL)
+                    .setWhen(System.currentTimeMillis())
+                    .setTicker(temp_str + " 일기를 작성할 시간이에요!")
+                    .setContentTitle(temp_str + " 일기를 작성할 시간이에요.\n산뜻한 " + temp_str + "을 시작해봐요!")
+                    .setStyle(new NotificationCompat.BigTextStyle().bigText(goodWords[random]))
+                    .setContentInfo("INFO")
+                    .setContentIntent(pendingI);
+        }
         if (notificationManager != null) {
 
             // 노티피케이션 동작시킴
