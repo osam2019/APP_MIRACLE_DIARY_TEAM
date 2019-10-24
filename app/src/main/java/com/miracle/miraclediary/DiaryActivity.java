@@ -147,6 +147,9 @@ public class DiaryActivity extends BaseCustomBarActivity {
 
     //임시로 만든 함수입니다.
     public void sqlGet(int level) {
+
+        DBManager.getInstance().updateDB("TestTable2");
+
         ArrayList idx = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.IDX);
         ArrayList date = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.DATE);
         ArrayList context = DBManager.getInstance().GetData("TestTable2", DBManager.TYPE.CONTEXT);
@@ -216,8 +219,10 @@ public class DiaryActivity extends BaseCustomBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        DBManager.getInstance().setDB(db);
         DBManager.getInstance().updateDB("TestTable");
         DBManager.getInstance().updateDB("TestTable2");
+        sqlGet();
         sqlGet(tab_level);
     }
 
