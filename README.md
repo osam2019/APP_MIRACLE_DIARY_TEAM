@@ -37,12 +37,49 @@ Android Version : at least Android API Level 26 (Oreo)
 설정한 알림을 받으면 습관에 관한 명언을 함께 볼 수 있습니다.
 
 ## 파일 정보 및 목록 (File Manifest)
+AlarmReceiver.java
+BaseCustomBarActivity.java
+CalendarActivity.java
+DBHelper.java
+DBManager.java
+DeviceBootReceiver.java
+DiaryActivity.java
+DiaryFragment.java
+EditorActivity.java
+EditorTextWatcher.java
+EventDecorator.java
+GoalActivity.java
+GoalSimpleAdapter.java
+HighlightSimpleAdapter.java
+MainActivity.java
+MenuActivity.java
+Singleton.java
+SplashActivity.java
+TextHighlightChanger.java
 
+EditorTutorialDialog.java
+HabitEditorDialog.java
 
+actionbar_default.xml
+actionbar_editor.xml	
+actionbar_prev.xml
+actionbar_settime.xml
+activity_diary.xml
+activity_editor.xml
+activity_goal.xml
+activity_main.xml
+calendar_layout.xml
+content_diary.xml
+content_goal.xml
+dialog_editor_tutorial.xml
+dialog_habit_editor.xml
+menu.xml
+row_cal.xml
+row_diary.xml
+row_goal.xml
+splash_intro.xml
 
 ## 저작권 및 사용권 (Copyright / End User License)
-
-Material Calendar View is Copyright (c) 2018 Prolific Interactive. It may be redistributed under the terms specified in the LICENSE file.//https://github.com/prolificinteractive/material-calendarview
 
 MIT License
 
@@ -79,9 +116,18 @@ SOFTWARE.
 
 ## 알려진 버그 (Known Issues)
 
+캘린더에서 다이어리_날짜 로딩 시간이 1초이상 걸림
+
 ## 문제 발생에 대한 해결책 (Troubleshooting)
+
+코드의 리팩토링과 DB의 최적화
+
 개발자 이메일로 버그내용을 보내주시기 바랍니다.
+
 ## 크레딧 (Credit)
 
+Material Calendar View is Copyright (c) 2018 Prolific Interactive. It may be redistributed under the terms specified in the LICENSE file.//https://github.com/prolificinteractive/material-calendarview
+
 ## 업데이트 정보 (Change Log)
+
 version-alpha (2019/10/24)
