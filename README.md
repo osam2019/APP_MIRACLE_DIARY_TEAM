@@ -12,7 +12,7 @@ Android Version : at least Android API Level 26 (Oreo)
 ## 사용법 (Getting Started)
 
 <img src="/readmeImg/메인화면1.png" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
-<img src="/readmeImg/.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
+<img src="/readmeImg/습관.PNG" width="209px" height="437px" title="px(픽셀) 크기 설정" alt="a"></img>
 
 첫 번째 탭을 눌러서 길들일 습관을 입력합니다.
 
