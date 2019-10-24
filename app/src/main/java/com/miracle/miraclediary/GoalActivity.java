@@ -146,6 +146,7 @@ public class GoalActivity extends BaseCustomBarActivity {
 
         temp = new ArrayList<>();
         mode = new ArrayList<>();
+        ArrayList<Boolean> isFinished = new ArrayList<>();
 
         // 4 성공한 습관
         String sql = "select * from TestTable where textDate == \"" + data + "\"";
@@ -165,6 +166,7 @@ public class GoalActivity extends BaseCustomBarActivity {
 
             temp.add(0, c.getString(idx_pos));
             mode.add(0,c.getString(textMode));
+            isFinished.add(true);
             data_List.add(0, map);
         }
 
@@ -187,6 +189,7 @@ public class GoalActivity extends BaseCustomBarActivity {
 
             temp.add(0, c.getString(idx_pos));
             mode.add(0,c.getString(textMode));
+            isFinished.add(false);
             data_List.add(0, map);
         }
 
@@ -209,6 +212,7 @@ public class GoalActivity extends BaseCustomBarActivity {
 
             temp.add(0, c.getString(idx_pos));
             mode.add(0, c.getString(textMode));
+            isFinished.add(false);
             data_List.add(0, map);
         }
 
@@ -231,6 +235,7 @@ public class GoalActivity extends BaseCustomBarActivity {
 
             temp.add(0, c.getString(idx_pos));
             mode.add(0,c.getString(textMode));
+            isFinished.add(false);
             data_List.add(0, map);
         }
 
@@ -239,7 +244,8 @@ public class GoalActivity extends BaseCustomBarActivity {
 
         int[] ids = {R.id.textView2, R.id.textView3};
         //if (data_List.size() != 0) {
-        SimpleAdapter adapter = new SimpleAdapter(this, data_List, R.layout.row_goal, keys, ids);
+        SimpleAdapter adapter = new GoalSimpleAdapter(this, data_List, R.layout.row_goal, keys,
+                                                        ids, mode, isFinished);
         list1.setAdapter(adapter);
         //}
     }
