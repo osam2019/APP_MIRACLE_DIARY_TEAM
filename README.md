@@ -1,6 +1,6 @@
 # Miracle-Diary
-
-습관과 할 일을 정리하는 일기장을 App으로 구현했습니다.
+<img src="/readmeImg/ic_launcher.png" width="100px" height="100px" title="px(픽셀) 크기 설정" alt="a"></img> <br>
+습관과 할 일을 정리하고 레벨시스템을 통해 자기개발을 돕고 성장의 정도를 볼 수 있는 게임형 다이어리 플랫폼입니다.
 
 ## 컴퓨터 구성 / 필수 조건 (Prerequisites)
 Android Version : at least Android API Level 26 (Oreo)
